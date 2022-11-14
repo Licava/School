@@ -38,3 +38,9 @@ Route::get('/delete-user/{id}', [App\Http\Controllers\backend\UserController::cl
 Route::get('/Scholarship', [App\Http\Controllers\backend\UserController::class, 'Scholarship'])->name('Scholarship');
 
 Route::get('/AddScholarship', [App\Http\Controllers\backend\UserController::class, 'AddScholarship'])->name('AddScholarship');
+
+Route::get('/Profile', [App\Http\Controllers\backend\UserController::class, 'profile'])->name('profile');
+
+Route::get('/Dashboard', [App\Http\Controllers\backend\UserController::class, 'dashboard'])->name('dashboard');
+
+Route::get('/Apply', [App\Http\Controllers\backend\UserController::class, 'Apply'])->name('Apply');

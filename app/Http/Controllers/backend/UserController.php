@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use DB;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -135,5 +136,22 @@ class UserController extends Controller
     {
         return view ('backend.user.Addscholarship');
     }
-    
+    public function profile()
+    {
+        
+        return view ('backend.user.profile');
+    }
+    public function dashboard()
+    {
+        $students =  User::where('role', 'Student')->count();
+        $admin =  User::where('role', 'Admin')->count();
+        $users =  User::count();
+
+        return view ('backend.layouts.dashboard', compact('students', 'admin','users'));
+    }
+    public function Apply()
+    {
+        
+        return view ('backend.user.applyscholarship');
+    }
 }
