@@ -34,7 +34,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
+          <li class="nav-item">
             <a href="{{URL::to('/Dashboard')}}" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -54,7 +54,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href= "{{URL::to('/AddUser-index')}}" class="nav-link">
+            <a href= "{{URL::to('/AddUser-index')}}"class="nav-link ">
               <i class="nav-icon fas fa-user-plus"></i>
               <p>
                Add Users
@@ -93,6 +93,7 @@
                 Scholarship
               </p>  
             </a>
+            </li>
           <li class="nav-item">
           <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -103,6 +104,7 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+                                        </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
