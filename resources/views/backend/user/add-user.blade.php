@@ -12,7 +12,7 @@
             <div class="card">
             <div class="card-header">
                 <h5 class="card-title">
-                    Add User mga tangas
+                    Add User mga tangas s
                 </h5>
             </div>
             <div class="card-body">
