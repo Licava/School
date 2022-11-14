@@ -46,7 +46,8 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="password" class="form-control" placeholder="Password">
+          <input type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+          
           @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $messege }}</strong>
