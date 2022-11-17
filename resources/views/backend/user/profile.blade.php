@@ -123,7 +123,8 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
-
+   
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -133,7 +134,11 @@
             <!-- Profile Image -->
             <div class="card card-primary card-outline">
               <div class="card-body box-profile">
-                
+              <div class="text-center">
+                  <img id="showImage" class="profile-user-img img-fluid img-circle"
+                       src="../../dist/img/user4-128x128.jpg"
+                       alt="User profile picture">
+                </div>
                 <h3 class="profile-username text-center">{{ auth()-> user() ->name }}</h3>
 
                 <p class="text-muted text-center">{{auth()-> user() ->email}}</p>
@@ -160,6 +165,12 @@
                 </ul>
               </div><!-- /.card-header -->
               <div class="card-body">
+             
+              @if(count($errors))
+  @foreach ($errors->ail() as $error)
+  <p class="alert alert-danger alert-dismissible fade show">{{$error}}</p>
+  @endforeach
+  @endif
                 <div class="tab-content">
                
                 <div class="active tab-pane" id="activity">
@@ -168,16 +179,30 @@
                       <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" name="name" Value="{{ $userdata->name}}">
+                          <input type="text" class="form-control" name="name" Value="{{ $userdata->name}}" required>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control"  name="email" Value="{{$userdata->email}}">
+                          <input type="email" class="form-control"  name="email" Value="{{$userdata->email}}" required>
                         </div>
                       </div>
-                      
+                      <div class="form-group row">
+                        <label for="inputEmail" class="col-sm-2 col-form-label">Phone Number</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control"  name="number" Value="{{$userdata->id}}" required>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputImage" class="col-sm-2 col-form-label">Image</label>
+                        <div class="col-sm-10">
+                        <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="image">
+                        <label class="custom-file-label" for="exampleInputFile">Upload Image</label>
+</div>
+                        </div>
+                      </div>
                       
                       
                       <div class="form-group row">
@@ -215,4 +240,15 @@
     </section>
     <!-- /.content -->
   </div>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('#image').change(function(e){
+        var reader = new FileReader();
+        reader.onload = function(e){
+          $('#showImage').attr('src',e.target.result);  
+        }
+        reader.readAsDataURL(e.target.files['0']);
+      });
+    });
+    </script>
 @endsection

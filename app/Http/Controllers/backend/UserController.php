@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Hash;
 use DB;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
+
 
 class UserController extends Controller
 {
@@ -149,13 +152,16 @@ class UserController extends Controller
 
     public function Updateprofile(Request $request)
     {
+         
+
         $id = Auth::user()->id;
         $datas = array();
         $datas = User::find($id);
      
         $datas['name'] = $request->name;
         $datas['email'] = $request->email;
-
+       
+        
         $datas->save();
         if($datas)
         {
