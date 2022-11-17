@@ -25,7 +25,11 @@
   <div class="card" >
     <div class="card-body login-card-body">
       <p class="login-box-msg">Scholarship Management System</p>
-
+      @if(count($errors))
+  @foreach ($errors->all() as $error)
+  <p class="alert alert-danger alert-dismissible fade show">{{$error}}</p>
+  @endforeach
+  @endif
       <form method="POST" action="{{ route('login') }}">
                         @csrf
                 
@@ -34,11 +38,7 @@
           <input id="email" type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" value="{{ old('email') }}" required autocomplete="email" autofocus>
           
 
-          @error('email')
-                                    <span class="invalid-feedback" role="alert">
-</strong>Invalid credentials</strong></span>
-
-                                @enderror
+        
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -47,12 +47,7 @@
         </div>
         <div class="input-group mb-3">
           <input type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-          
-          @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $messege }}</strong>
-                                    </span>
-                                @enderror
+         
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>

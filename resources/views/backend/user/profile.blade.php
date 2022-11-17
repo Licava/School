@@ -134,7 +134,7 @@
             <div class="card card-primary card-outline">
               <div class="card-body box-profile">
                 
-                <h3 class="profile-username text-center">{{auth()-> user() ->name}}</h3>
+                <h3 class="profile-username text-center">{{ auth()-> user() ->name }}</h3>
 
                 <p class="text-muted text-center">{{auth()-> user() ->email}}</p>
 
@@ -163,25 +163,21 @@
                 <div class="tab-content">
                
                 <div class="active tab-pane" id="activity">
-                    <form class="form-horizontal">
+                    <form action="{{URL::to('Updateprofile')}}" method= "post">
+                    @csrf
                       <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputName" Value="{{auth()-> user() ->name}}">
+                          <input type="text" class="form-control" name="name" Value="{{ $userdata->name}}">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputEmail" Value="{{auth()-> user() ->email}}">
+                          <input type="email" class="form-control"  name="email" Value="{{$userdata->email}}">
                         </div>
                       </div>
-                      <div class="form-group row">
-                        <label for="inputName2" class="col-sm-2 col-form-label">Password</label>
-                        <div class="col-sm-10">
-                          <input type="password" class="form-control" id="inputName2" placeholder="Password">
-                        </div>
-                      </div>
+                      
                       
                       
                       <div class="form-group row">

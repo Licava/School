@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use DB;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -101,7 +102,10 @@ class UserController extends Controller
            return redirect()->route('alluser')->with($notifications);
         }
     }
-    
+
+  
+  
+  
     public function DeleteUser($id)
     {
         $delete = DB::table('users')->where('id',$id)->delete();
@@ -138,8 +142,42 @@ class UserController extends Controller
     }
     public function profile()
     {
-        
-        return view ('backend.user.profile');
+        $id = Auth::user()->id;
+        $userdata = User::find($id);
+        return view ('backend.user.profile', compact('userdata'));
+    }
+
+    public function Updateprofile(Request $request)
+    {
+        $id = Auth::user()->id;
+        $datas = array();
+        $datas = User::find($id);
+     
+        $datas['name'] = $request->name;
+        $datas['email'] = $request->email;
+
+        $datas->save();
+        if($datas)
+        {
+           $notifications = array
+           (
+            'messege'=>'Successfully User Inserted',
+            'alert-type'=>'success'
+
+           );
+           return redirect()->route('profile')->with($notifications);
+
+        }
+        else
+        {
+            $notifications = array
+           (
+            'messege'=>'Something is wrong,please try again',
+            'alert-type'=>'error'
+
+           );
+           return redirect()->route('profile')->with($notifications);
+        }
     }
     public function dashboard()
     {

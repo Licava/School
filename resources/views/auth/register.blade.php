@@ -21,8 +21,12 @@
       <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
     </div>
     <div class="card-body">
+    @if(count($errors))
+  @foreach ($errors->all() as $error)
+  <p class="alert alert-danger alert-dismissible fade show">{{$error}}</p>
+  @endforeach
+  @endif
       <p class="login-box-msg">Register a new membership</p>
-
       <form method="POST" action="{{ route('register') }}">
                         @csrf
         <div class="input-group mb-3">
