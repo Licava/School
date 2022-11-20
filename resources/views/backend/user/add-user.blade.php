@@ -106,7 +106,6 @@
 </div>
 
   <!-- /Hello this is the end of our life -->
-
 <div class="content-wrapper">
 
 <section class="content">
@@ -122,7 +121,7 @@
                 </h5>
             </div>
             <div class="card-body">
-              <form role="form" action="{{URL::to('Insert-user')}}" method="post">
+              <form role="form" action="{{URL::to('Insert-user')}}" method="post" onsubmit="return submitForm(this);">
                 @csrf
                 <div class="form-group row">
                     <label for="name" class="col-sm-2 col-form-label"> User name</label>
@@ -145,7 +144,7 @@
                 <div class="form-group row">
                     <label for="name" class="col-sm-2 col-form-label"> User Role</label>
                     <div class="col-sm-10">
-                        <select  class="form-control" id="exampleFormControlSelect1" name="role"  required>
+                        <select  class="form-control" id="exampleFormControlSelect1" name="role"  >
                         <option value="Admin">Admin</option>
                         <option value="Student">Student</option>
 </select>
@@ -154,12 +153,34 @@
                 </div>
 
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-info">Submit</button>
+                    <button type="submit" class="btn btn-info" >Submit</button>
                 </div>
+                <script>  
+   
+   function submitForm(form) {
+        swal({
+            title: "Are you sure?",
+            text: "This form will be submitted",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then(function (isOkay) {
+            if (isOkay) {
+                form.submit();
+            }
+        });
+        return false;
+    }
+
+</script>
               </form>  
             </div>
         </div>
-    </div>
+        </div>
+        </div>
 </section>
 </div>
+
+
 @endsection
