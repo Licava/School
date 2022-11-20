@@ -12,7 +12,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{('backend/dist/img/Jayson.jpg')}}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{(!empty($userdata->profile_image))? url( 'upload/profile_image/'.$userdata->profile_image):url('upload/no_image.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="{{URL::to('/Dashboard')}}" class="d-block">{{auth()-> user() ->name}}</a>
@@ -136,7 +136,7 @@
               <div class="card-body box-profile">
               <div class="text-center">
                   <img id="showImage" class="profile-user-img img-fluid img-circle"
-                       src="../../dist/img/user4-128x128.jpg"
+                       src="{{(!empty($userdata->profile_image))? url(  'upload/profile_image/'.$userdata->profile_image):url('upload/no_image.jpg')}}"
                        alt="User profile picture">
                 </div>
                 <h3 class="profile-username text-center">{{ auth()-> user() ->name }}</h3>
@@ -174,7 +174,7 @@
                 <div class="tab-content">
                
                 <div class="active tab-pane" id="activity">
-                    <form action="{{URL::to('Updateprofile')}}" method= "post">
+                    <form action="{{URL::to('Updateprofile')}}" method= "post" enctype="multipart/form-data">
                     @csrf
                       <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Name</label>
@@ -198,7 +198,7 @@
                         <label for="inputImage" class="col-sm-2 col-form-label">Image</label>
                         <div class="col-sm-10">
                         <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="image">
+                        <input name="profile_image" type="file" class="custom-file-input" id="image">
                         <label class="custom-file-label" for="exampleInputFile">Upload Image</label>
 </div>
                         </div>
@@ -216,7 +216,7 @@
                       </div>
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
-                          <button type="submit" class="btn btn-success">Submit</button>
+                          <button type="submit" class="btn btn-success" id="confirm">Submit</button>
                         </div>
                       </div>
                     </form>
@@ -251,4 +251,28 @@
       });
     });
     </script>
+    <script>  
+   
+             $(document).on("click", "#confirm", function(e){
+                 e.preventDefault();
+                 var form = $(this).parents('form');
+                    swal({
+                      title: "Are you Want to Update your Profile?",
+                      text: "This will be permanently updated once you click YES!",
+                      icon: "info",
+                      buttons: true,
+                      SuccessMode: true,
+                    })
+                    .then((isConfirm) => {
+                      if (isConfirm) {
+                        form.submit();
+                      } else {
+                        swal("The Data has been unchange !!");
+                      }
+                    });
+                });
+
+        </script>
+
+        
 @endsection

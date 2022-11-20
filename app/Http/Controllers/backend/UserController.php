@@ -160,8 +160,14 @@ class UserController extends Controller
      
         $datas['name'] = $request->name;
         $datas['email'] = $request->email;
-       
-        
+        if ($request->file('profile_image')){
+            $file = $request->file('profile_image');
+
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('upload/profile_image'),$filename);
+            $datas['profile_image'] = $filename;
+        }
+
         $datas->save();
         if($datas)
         {
