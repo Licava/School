@@ -174,7 +174,7 @@
                 <div class="tab-content">
                
                 <div class="active tab-pane" id="activity">
-                    <form action="{{URL::to('Updateprofile')}}" method= "post" enctype="multipart/form-data">
+                    <form action="{{URL::to('Updateprofile')}}" method= "post" enctype="multipart/form-data" onsubmit="return submitForm(this);">
                     @csrf
                       <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Name</label>
@@ -253,24 +253,22 @@
     </script>
     <script>  
    
-             $(document).on("click", "#confirm", function(e){
-                 e.preventDefault();
-                 var form = $(this).parents('form');
-                    swal({
-                      title: "Are you Want to Update your Profile?",
-                      text: "This will be permanently updated once you click YES!",
-                      icon: "info",
-                      buttons: true,
-                      SuccessMode: true,
-                    })
-                    .then((isConfirm) => {
-                      if (isConfirm) {
-                        form.submit();
-                      } else {
-                        swal("The Data has been unchange !!");
-                      }
-                    });
-                });
+   function submitForm(form) {
+        swal({
+            title: "Are you Want to Update your Profile?",
+            text: "This form will be submitted",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then(function (isOkay) {
+            if (isOkay) {
+                form.submit();
+            }
+        });
+        return false;
+    }
+
 
         </script>
 
