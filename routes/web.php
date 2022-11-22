@@ -43,6 +43,8 @@ Route::get('/AddScholarship', [App\Http\Controllers\backend\UserController::clas
 
 Route::get('/Profile', [App\Http\Controllers\backend\UserController::class, 'profile'])->name('profile');
 
+Route::get('/Changepassword', [App\Http\Controllers\backend\UserController::class, 'Changepassword'])->name('Changepassword');
+
 Route::get('/Dashboard', [App\Http\Controllers\backend\UserController::class, 'dashboard'])->name('dashboard');
 
 Route::get('/Apply', [App\Http\Controllers\backend\UserController::class, 'Apply'])->name('Apply');

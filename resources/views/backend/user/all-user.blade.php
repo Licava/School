@@ -73,6 +73,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{URL::to('/Changepassword')}}" class="nav-link">
+            <i class="nav-icon far fa-user"></i>
+              <p>
+                Change password
+              </p>
+            </a>
+          </li>
           <li class="nav-header">Services</li>
           <li class="nav-item">
           <a href="{{URL::to('/Scholarship')}}" class="nav-link">

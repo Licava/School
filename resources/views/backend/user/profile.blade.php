@@ -73,6 +73,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{URL::to('/Changepassword')}}" class="nav-link">
+            <i class="nav-icon far fa-user"></i>
+              <p>
+                Change password
+              </p>
+            </a>
+          </li>
           <li class="nav-header">Services</li>
           <li class="nav-item">
           <a href="{{URL::to('/Scholarship')}}" class="nav-link">
@@ -166,11 +174,8 @@
               </div><!-- /.card-header -->
               <div class="card-body">
              
-              @if(count($errors))
-  @foreach ($errors->ail() as $error)
-  <p class="alert alert-danger alert-dismissible fade show">{{$error}}</p>
-  @endforeach
-  @endif
+            
+           
                 <div class="tab-content">
                
                 <div class="active tab-pane" id="activity">
@@ -185,8 +190,14 @@
                       <div class="form-group row">
                         <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control"  name="email" Value="{{$userdata->email}}" required>
+                          <input type="email" class="form-control @error('email') is-invalid @enderror"  name="email" Value="{{$userdata->email}}" required>
+                          @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message  }}</strong>
+                                    </span>
+                                @enderror
                         </div>
+                       
                       </div>
                       <div class="form-group row">
                         <label for="inputEmail" class="col-sm-2 col-form-label">Phone Number</label>

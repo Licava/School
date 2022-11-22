@@ -10,10 +10,11 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
-
+use App\Http\Requests\StorePostRequest;
 
 class UserController extends Controller
 {
+   
     public function __construct()
     {
         $this->middleware('auth');
@@ -40,7 +41,9 @@ class UserController extends Controller
         $data['password'] = Hash::make($request->password);
         $data['created_at'] = date('Y-m-d H:i;s');
         $data['updated_at'] = date('Y-m-d H:i;s');
-
+        $data = $request->validate([
+            'email' => 'string | email | unique:users',
+        ]);
         $insert = DB::table('users')->insert($data);
         if($insert)
         {
@@ -79,7 +82,9 @@ class UserController extends Controller
         $data['password'] = Hash::make($request->password);
         $data['created_at'] = date('Y-m-d H:i;s');
         $data['updated_at'] = date('Y-m-d H:i;s');
-
+        $data = $request->validate([
+            'email' => 'string | email | unique:users',
+        ]);
         $update = DB::table('users')
         ->where('id', $id)
         ->update($data);
@@ -150,14 +155,16 @@ class UserController extends Controller
         return view ('backend.user.profile', compact('userdata'));
     }
 
-    public function Updateprofile(Request $request)
+    public function Updateprofile( Request $request)
     {
          
-
+      
         $id = Auth::user()->id;
         $datas = array();
-        $datas = User::find($id);
-     
+        $datas = $request->validate([
+            'email' => "required|email|unique:users,email,$id"
+        ]); 
+        $datas = User::findOrFail($id);
         $datas['name'] = $request->name;
         $datas['email'] = $request->email;
         if ($request->file('profile_image')){
@@ -167,7 +174,7 @@ class UserController extends Controller
             $file->move(public_path('upload/profile_image'),$filename);
             $datas['profile_image'] = $filename;
         }
-
+      
         $datas->save();
         if($datas)
         {
@@ -203,5 +210,11 @@ class UserController extends Controller
     {
         
         return view ('backend.user.applyscholarship');
+    }
+    public function Changepassword()
+    {
+        $id = Auth::user()->id;
+        $userpassword = User::find($id);
+        return view ('backend.user.changepassword', compact('userpassword'));
     }
 }

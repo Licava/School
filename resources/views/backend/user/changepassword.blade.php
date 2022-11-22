@@ -1,4 +1,6 @@
+
 @extends('backend.layouts.app')
+
 @section('content')
 <aside class="main-sidebar sidebar-dark-warning elevation-4">
     <!-- Brand Logo -->
@@ -56,14 +58,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href= "{{URL::to('/AddUser-index')}}"class="nav-link active ">
+            <a href= "{{URL::to('/AddUser-index')}}"class="nav-link  ">
               <i class="nav-icon fas fa-user-plus"></i>
               <p>
                Add Users
               </p>
             </a>
           </li>
-         
            @endif
            <li class="nav-item">
             <a href="{{URL::to('/Profile')}}" class="nav-link">
@@ -74,7 +75,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{URL::to('/Changepassword')}}" class="nav-link">
+            <a href="{{URL::to('/Changepassword')}}" class="nav-link active">
             <i class="nav-icon far fa-user"></i>
               <p>
                 Change password
@@ -113,88 +114,96 @@
   <!-- /.control-sidebar -->
 </div>
 
-  <!-- /Hello this is the end of our life -->
-<div class="content-wrapper">
-
-<section class="content">
-    <div class="row">
-        <div class="col-lg-1">
-
-        </div>
-        <div class="col-lg-10">
-            <div class="card">
-            <div class="card-header">
-                <h5 class="card-title">
-                    Add User mga tangas s
-                </h5>
+ <!-- Content Wrapper. Contains page content -->
+ <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+        <div class="col-sm-6 ">
+        <h3>Scholarship</h3>
+            
+       
+          </div>
+          <div class="col-sm-6">
+          <h1></h1>
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Contacts</li>
+             
+            </ol>
+            <div>
+              <p>&nbsp</p>
             </div>
-            <div class="card-body">
-              <form role="form" action="{{URL::to('Insert-user')}}" method="post" onsubmit="return submitForm(this);">
-                @csrf
-                <div class="form-group row">
-                    <label for="name" class="col-sm-2 col-form-label"> User name</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" name="name" placeholder="Enter your name" required>
+          </div>
+          <div class="col-sm-12 d-flex justify-content-between">
+          <a></a>
+            
+          
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+  <div></div>
+    <!-- Main content -->
+
+            
+
+    <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Add Scholarship</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Scholarship Name</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">About</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputFile">Logo or Image</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <div class="input-group-append">
+                        <span class="input-group-text">Upload</span>
+                      </div>
                     </div>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                  </div>
                 </div>
-                <div class="form-group row">
-                    <label for="name" class="col-sm-2 col-form-label"> User Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Enter your Email" required>
-                        @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message  }}</strong>
-                                    </span>
-                                @enderror
-                    </div>
-                 
-                </div>
-                <div class="form-group row">
-                    <label for="name" class="col-sm-2 col-form-label"> User Password</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" name="password" placeholder="Enter your Password" required>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="name" class="col-sm-2 col-form-label"> User Role</label>
-                    <div class="col-sm-10">
-                        <select  class="form-control" id="exampleFormControlSelect1" name="role"  >
-                        <option value="Admin">Admin</option>
-                        <option value="Student">Student</option>
-</select>
-                    </div>
-                </div>
-                </div>
+                <!-- /.card-body -->
 
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-info" >Submit</button>
+                  <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
-                <script>  
-   
-   function submitForm(form) {
-        swal({
-            title: "Are you sure?",
-            text: "This form will be submitted",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-        .then(function (isOkay) {
-            if (isOkay) {
-                form.submit();
-            }
-        });
-        return false;
-    }
-
-</script>
-              </form>  
+              </form>
             </div>
-        </div>
-        </div>
-        </div>
-</section>
-</div>
+        <!-- /.card-body -->
+       
+        <!-- /.card-footer -->
+      </div>
+      <!-- /.card -->
 
-
-@endsection
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.2.0
+    </div>
+  </footer>
+  @endsection

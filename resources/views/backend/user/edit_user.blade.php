@@ -115,6 +115,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{URL::to('/Changepassword')}}" class="nav-link">
+            <i class="nav-icon far fa-user"></i>
+              <p>
+                Change password
+              </p>
+            </a>
+          </li>
           <li class="nav-header">Services</li>
           <li class="nav-item">
           <a href="{{URL::to('/Scholarship')}}" class="nav-link">
@@ -189,7 +197,12 @@
                       <div class="form-group row">
                         <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control"  name="email" value="{{$edit->email}}">
+                          <input type="email" class="form-control @error('email') is-invalid @enderror"  name="email" value="{{$edit->email}}">
+                          @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message  }}</strong>
+                                    </span>
+                                @enderror
                         </div>
                       </div>
                       <div class="form-group row">
