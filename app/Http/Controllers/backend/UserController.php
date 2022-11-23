@@ -34,6 +34,11 @@ class UserController extends Controller
 
     public function InsertUser(Request $request)
     {
+   
+        $id = Auth::user()->id;
+        $data = $request->validate([
+            'email' => "required|email|unique:users,email,$id"
+        ]);
         $data = array();
         $data['name'] = $request->name;
         $data['email'] = $request->email;
@@ -41,9 +46,7 @@ class UserController extends Controller
         $data['password'] = Hash::make($request->password);
         $data['created_at'] = date('Y-m-d H:i;s');
         $data['updated_at'] = date('Y-m-d H:i;s');
-        $data = $request->validate([
-            'email' => 'string | email | unique:users',
-        ]);
+       
         $insert = DB::table('users')->insert($data);
         if($insert)
         {
@@ -73,8 +76,12 @@ class UserController extends Controller
         return view('backend.user.edit_user', compact('edit'));
     }
 
-    public function UpdateUser(request $request,$id)
+    public function UpdateUser(request $request, $id)
     {
+       
+        $data = $request->validate([
+            'email' => "required|email|unique:users,email,$id"
+        ]);
         $data = array();
         $data['name'] = $request->name;
         $data['email'] = $request->email;
@@ -82,9 +89,7 @@ class UserController extends Controller
         $data['password'] = Hash::make($request->password);
         $data['created_at'] = date('Y-m-d H:i;s');
         $data['updated_at'] = date('Y-m-d H:i;s');
-        $data = $request->validate([
-            'email' => 'string | email | unique:users',
-        ]);
+       
         $update = DB::table('users')
         ->where('id', $id)
         ->update($data);
