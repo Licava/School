@@ -222,4 +222,36 @@ class UserController extends Controller
         $userpassword = User::find($id);
         return view ('backend.user.changepassword', compact('userpassword'));
     }
+
+    public function Updatepassword(request $request){
+        $validateData = $request->validate([
+            'oldpassword' => 'required',
+            'newpassword' => 'required',
+            'confirmpassword' => 'required|same:newpassword',
+        ]);
+
+        $hashedpassword =Auth::user()->password;
+        if(Hash::check($request->oldpassword,$hashedpassword)){
+                $users = User::find(Auth::id());
+                $users->password = bcrypt($request->newpassword);
+                $users->save();
+                $notifications = array
+           (
+            'messege'=>'Successfully Change Password    ',
+            'alert-type'=>'success'
+
+           );
+           return redirect()->back()->with($notifications);
+        }
+        else
+        {
+            $notifications = array
+           (
+            'messege'=>'The old password did not match  ,please try again',
+            'alert-type'=>'error'
+
+           );
+           return redirect()->back()->with($notifications);
+        }
+    }
 }
