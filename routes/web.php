@@ -48,3 +48,6 @@ Route::get('/Changepassword', [App\Http\Controllers\backend\UserController::clas
 Route::get('/Dashboard', [App\Http\Controllers\backend\UserController::class, 'dashboard'])->name('dashboard');
 
 Route::get('/Apply', [App\Http\Controllers\backend\UserController::class, 'Apply'])->name('Apply');
+
+
+Route::post('/Updatepassword', [App\Http\Controllers\backend\UserController::class, 'Updatepassword'])->name('Updatepassword');
