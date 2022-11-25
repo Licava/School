@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 @section('content')
-<aside class="main-sidebar sidebar-dark-warning elevation-4">
+<aside class="main-sidebar sidebar-dark-info elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="{{('backend/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
