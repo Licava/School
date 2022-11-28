@@ -145,14 +145,7 @@ class UserController extends Controller
         }
     }
 
-    public function Scholarship()
-    {
-        return view ('backend.user.scholarship');
-    }
-    public function AddScholarship()
-    {
-        return view ('backend.user.Addscholarship');
-    }
+    
     public function profile()
     {
         $id = Auth::user()->id;

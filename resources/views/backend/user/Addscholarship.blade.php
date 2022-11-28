@@ -147,7 +147,7 @@
   <div></div>
     <!-- Main content -->
 
-            
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <div class="card card-primary">
               <div class="card-header">
@@ -155,36 +155,58 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form>
+              <form action="/p" enctype="multipart/form-data" method="post">
+                @csrf
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Scholarship Name</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <input type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : ''}} " name="title" id="title" 
+                      value="{{ old('title') }}"  autocomplete="title" autofocus>
+                      @if ($errors->has('title'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('title')}}</strong>
+                                    </span>
+                                @endif
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword1">About</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <label for="exampleInputEmail1">Scholarship Info</label>
+                    <input type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : ''}} " name="description" id="description" 
+                      value="{{ old('description') }}"  autocomplete="description" autofocus>
+                      @if ($errors->has('description'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('description')}}</strong>
+                                    </span>
+                                @endif
                   </div>
+               
                   <div class="form-group">
-                    <label for="exampleInputFile">Logo or Image</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                  </div>
-                </div>
+                        <label for="inputImage">Image</label>
+                          
+                        <div class="custom-file">
+                        <input name="image" type="file" class="custom-file-input" id="image">
+                        <label class="custom-file-label" for="exampleInputFile"></label>
+                        @if ($errors->has('image'))
+                                    
+                                        <strong>{{ $errors->first('image')}}</strong>
+                                  
+                                @endif
+ 
+                        </div>
+                 
                 <!-- /.card-body -->
-
-                <div class="card-footer">
+                <div class="form-group">
+              
+              </div>
+              <div class="form-group">
+              <img id="showImage" class=" background-user-img  rounded mx-auto d-block">
+              
+              </div>
+            </form>
+          </div>
+                <div class="form-group">
+              
+                </div>
+                <div class="form-group">
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
               </form>
@@ -198,12 +220,37 @@
     </section>
     <!-- /.content -->
   </div>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('#image').change(function(e){
+        var reader = new FileReader();
+        reader.onload = function(e){
+          $('#showImage').attr('src',e.target.result);  
+        }
+        reader.readAsDataURL(e.target.files['0']);
+      });
+    });
+    </script>
+    <script>  
+   
+   function submitForm(form) {
+        swal({
+            title: "Are you Want to Update your Profile?",
+            text: "This form will be submitted",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then(function (isOkay) {
+            if (isOkay) {
+                form.submit();
+            }
+        });
+        return false;
+    }
+
+
+        </script>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
-    </div>
-  </footer>
+
   @endsection
