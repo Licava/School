@@ -166,7 +166,7 @@
                       <h2 class="lead"><b> {{ $Scholarship->title}} </b></h2>
                       <p class="text-muted text-sm"><b>About: </b> {{ $Scholarship->description}} </p>
                       <ul class="ml-4 mb-0 fa-ul text-muted">
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Mabini Bauan Batangas</li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> {{ $Scholarship->use_id}}</li>
                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
                       </ul>
                     </div>

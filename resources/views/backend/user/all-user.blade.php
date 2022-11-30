@@ -154,17 +154,22 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Role</th>
+                    <th>Profile Picture </th>
                     <th>Action </th>
                   </tr>
                   </thead>
                   <tbody>
-                  
+                 
                   @foreach($all as $key=>$row)
                   <tr>
                     <td>{{ $key+1 }}</td>
                     <td>{{ $row->name }}</td>
                     <td>{{ $row->email }}</td>
-                    <td>{{ $row->role }}</td>
+                    <td>{{ $row->role}}</td>
+                    <td><img  src="{{(!empty($row->profile_image))? url(  'upload/profile_image/'.$row->profile_image):url('upload/no_image.jpg')}}" alt="user-avatar" class="profile-user-img img-fluid img-circle">
+             
+                      
+                    </td>
                     <td>
                     <a href="{{ URL::to('/Edit-User/'.$row->id) }}" class="btn btn-sm btn-info">Edit</a>
                     <a href="{{ URL::to('/delete-user/'.$row->id) }}" class="btn btn-sm btn-danger" id="delete">Delete</a>
@@ -172,7 +177,7 @@
                     </td>
                   </tr>
                   @endforeach
-                  
+                 
                 </table>
               </div>
               <!-- /.card-body -->
