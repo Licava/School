@@ -42,7 +42,7 @@ class ScholarshipController extends Controller
         ]);
         $alls = DB::table('scholarships')
         ->get();
-        return redirect()->back()->with(compact('alls'));
+        return redirect()->route('Scholarship')->with(compact('alls'));
         
     }
 }

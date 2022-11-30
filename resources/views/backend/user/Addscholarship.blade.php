@@ -207,7 +207,10 @@
               
                 </div>
                 <div class="form-group">
+                <div class="col-sm-12 d-flex justify-content-between">
                   <button type="submit" class="btn btn-primary">Submit</button>
+                  <a href="/Scholarship" class="btn btn-info" >Cancel</a>
+                </div>
                 </div>
               </form>
             </div>

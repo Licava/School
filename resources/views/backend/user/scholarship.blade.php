@@ -175,6 +175,7 @@
                     </div>
                   </div>
                 </div>
+                @if(auth()-> user() ->role=='Admin')
                 <div class="card-footer">
                   <div class="text-right">
                   <a href="#" class="btn btn-sm btn-primary">
@@ -186,6 +187,19 @@
                    
                   </div>
                 </div>
+                @else
+                <div class="card-footer">
+                  <div class="text-right">
+                  <a href="#" class="btn btn-sm btn-success">
+                      <i class="fas fa-comments"></i> Details
+                    </a>
+                    <a href="/Apply" class="btn btn-sm btn-danger">
+                      <i class="fas fa-comments"></i>Apply
+                    </a>
+                   
+                  </div>
+                </div>
+                @endif
               </div>
             </div>
             @endforeach
