@@ -243,7 +243,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>1</h3>
+                <h3>{{$scholarshipss}}</h3>
 
                 <p>Total of number Scholarship</p>
               </div>

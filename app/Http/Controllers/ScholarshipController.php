@@ -45,4 +45,56 @@ class ScholarshipController extends Controller
         return redirect()->route('Scholarship')->with(compact('alls'));
         
     }
+    public function editscholarship($id)
+    {
+        $edit_scholar = DB::table('scholarships')->where('id',$id)->first();
+        return view('backend.user.edit_scholarship', compact('edit_scholar'));
+    }
+
+    public function UpdateScholarship(request $request, $id)
+    {   
+    
+        $data = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'image' => ['required','image'],
+        ]);
+        $data = array();
+        $data['title'] = $request->title;
+        $data['description'] = $request->description;
+      
+        if (request('image')){
+            $imagepath = request('image')->store('uploads', 'public');
+        }
+      
+  
+     
+        $update = DB::table('scholarships')
+        ->where('id', $id)
+        ->update(array_merge($data, ['image =>  $imagepath']
+
+        ));
+        if($update)
+        {
+           $notifications = array
+           (
+            'messege'=>'Successfully User Inserted',
+            'alert-type'=>'success'
+
+           );
+           return redirect()->route('Scholarship')->with($notifications);
+
+        }
+        else
+        {
+            $notifications = array
+           (
+            'messege'=>'Something is wrong,please try again',
+            'alert-type'=>'error'
+
+           );
+           return redirect()->route('Scholarship')->with($notifications);
+        }
+    }
+
 }

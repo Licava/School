@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use DB;
 use App\Models\User;
+use App\Models\Scholarship;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
@@ -201,8 +202,9 @@ class UserController extends Controller
         $students =  User::where('role', 'Student')->count();
         $admin =  User::where('role', 'Admin')->count();
         $users =  User::count();
+        $scholarshipss = Scholarship::count();  
 
-        return view ('backend.layouts.dashboard', compact('students', 'admin','users'));
+        return view ('backend.layouts.dashboard', compact('students', 'admin','users', 'scholarshipss'));
     }
     public function Apply()
     {

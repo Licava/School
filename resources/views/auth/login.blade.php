@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="{{asset('backend/dist/css/adminlte.min.css')}}">
   <!-- Toaster Notification -->
 <link rel="stylesheet" href="{{('toaster/toastr.min.css')}}">
+
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -46,10 +47,11 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-         
+          <input type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" id="password" >
+       
           <div class="input-group-append">
             <div class="input-group-text">
+     
               <span class="fas fa-lock"></span>
             </div>
           </div>
@@ -136,7 +138,7 @@
                     });
                 });
         </script>
-
+       
 <!-- End Toaster & Sweetalert -->
 <!-- jQuery -->
 <script src="{{asset('backend/plugins/jquery/jquery.min.js')}}"></script>

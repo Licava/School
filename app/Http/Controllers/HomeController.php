@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
+use App\Models\Scholarship;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('backend.layouts.dashboard');
+        $students =  User::where('role', 'Student')->count();
+        $admin =  User::where('role', 'Admin')->count();
+        $users =  User::count();
+        $scholarshipss = Scholarship::count();  
+
+        return view ('backend.layouts.dashboard', compact('students', 'admin','users', 'scholarshipss'));
     }
 }

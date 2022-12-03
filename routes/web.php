@@ -40,7 +40,9 @@ Route::post('/p', [App\Http\Controllers\ScholarshipController::class, 'Store'])-
 
 Route::get('/Scholarship', [App\Http\Controllers\ScholarshipController::class, 'Scholarship'])->name('Scholarship');
 
+Route::get('/Scholarship/{id}', [App\Http\Controllers\ScholarshipController::class, 'editscholarship'])->name('editscholarship');
 
+Route::post('/Update-Scholarship/{id}', [App\Http\Controllers\ScholarshipController::class, 'UpdateScholarship'])->name('UpdateScholarship');
 
 Route::get('/AddScholarship', [App\Http\Controllers\ScholarshipController::class, 'AddScholarship'])->name('AddScholarship');
 
