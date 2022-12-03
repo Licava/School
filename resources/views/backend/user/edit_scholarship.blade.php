@@ -190,8 +190,8 @@
                 <h3 class="card-title">Add Scholarship</h3>
               </div>
               <!-- /.card-header -->
-              <!-- form start -->
-              <form action="/Update-Scholarship/{id}" enctype="multipart/form-data" method="post">
+              <!-- form start --> 
+              <form action="{{URL::to('/Update-Scholarship/'.$edit_scholar->id)}}" enctype="multipart/form-data" method="post">
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
@@ -234,8 +234,10 @@
               
               </div>
               <div class="form-group">
-              <img id="showImage" class=" background-user-img  rounded mx-auto d-block">
               
+              <img id="showImage" class="profile-user-img img-fluid img-circle  d-block"
+              src="{{(!empty($edit_scholar->image))? url(  'upload/image/'.$edit_scholar->image):url('upload/no_image.jpg')}}">
+                
               </div>
             </form>
           </div>
@@ -259,6 +261,30 @@
     </section>
     <!-- /.content -->
   </div>
+  <script src="{{('toaster/toastr.min.js')}}"></script>
+<script src="{{('toaster/sweetalert.min.js') }}"></script>
+
+
+<script>
+            @if(Session::has('messege'))
+              var type="{{Session::get('alert-type','info')}}"
+              switch(type){
+                  case 'info':
+                       toastr.info("{{ Session::get('messege') }}");
+                       break;
+                  case 'success':
+                      toastr.success("{{ Session::get('messege') }}");
+                      break;
+                  case 'warning':
+                     toastr.warning("{{ Session::get('messege') }}");
+                      break;
+                  case 'error':
+                      toastr.error("{{ Session::get('messege') }}");
+                      break;
+              }
+            @endif
+         </script>  
+
   <script type="text/javascript">
     $(document).ready(function(){
       $('#image').change(function(e){

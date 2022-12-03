@@ -44,6 +44,8 @@ Route::get('/Scholarship/{id}', [App\Http\Controllers\ScholarshipController::cla
 
 Route::post('/Update-Scholarship/{id}', [App\Http\Controllers\ScholarshipController::class, 'UpdateScholarship'])->name('UpdateScholarship');
 
+Route::get('/delete-scholarship/{id}', [App\Http\Controllers\ScholarshipController::class, 'Deletescholarship'])->name('Deletescholarship');
+
 Route::get('/AddScholarship', [App\Http\Controllers\ScholarshipController::class, 'AddScholarship'])->name('AddScholarship');
 
 

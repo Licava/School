@@ -180,11 +180,14 @@
                   </div>
                
                   <div class="form-group">
+
+             
                         <label for="inputImage">Image</label>
                           
                         <div class="custom-file">
-                        <input name="image" type="file" class="custom-file-input" id="image">
-                        <label class="custom-file-label" for="exampleInputFile"></label>
+                        
+                  <input name="image" type="file" class="custom-file-input" id="image">
+                        <label class="custom-file-label" for="exampleInputFile">Upload Image</label>
                         @if ($errors->has('image'))
                                     
                                         <strong>{{ $errors->first('image')}}</strong>

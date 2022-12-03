@@ -166,12 +166,12 @@
                       <h2 class="lead"><b> {{ $Scholarship->title}} </b></h2>
                       <p class="text-muted text-sm"><b>About: </b> {{ $Scholarship->description}} </p>
                       <ul class="ml-4 mb-0 fa-ul text-muted">
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> {{ $Scholarship->user_id}}</li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> </li>
                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
                       </ul>
                     </div>
                     <div class="col-5 text-center">
-                      <img src="/storage/{{$Scholarship->image}}" alt="user-avatar" class="img-circle img-fluid">
+                      <img src="{{(!empty($Scholarship->image))? url('upload/image/'.$Scholarship->image):url('upload/no_image.jpg')}}" alt="user-avatar" class="img-circle img-fluid">
                     </div>
                   </div>
                 </div>
@@ -179,6 +179,9 @@
                 <div class="card-footer">
                   <div class="text-right">
                 
+                  <a href="  {{ URL::to('/delete-scholarship/'.$Scholarship->id) }}" class="btn btn-sm btn-danger" id="delete">
+                      <i class="fas fa-comments"></i> Delete
+                    </a>
                   <a href="  {{ URL::to('/Scholarship/'.$Scholarship->id) }}" class="btn btn-sm btn-primary">
                       <i class="fas fa-comments"></i> Edit
                     </a>

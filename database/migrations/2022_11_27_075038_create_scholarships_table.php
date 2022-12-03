@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('scholarships', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+           
             $table->string('title');
             $table->text('description');
             $table->string('image');
             $table->timestamps();
 
-            $table->index('user_id');
+          
         });
     }
 

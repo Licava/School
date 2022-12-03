@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\User;
+use App\Models\Scholarship;
+use Illuminate\Support\Facades\Auth;
 class ScholarshipController extends Controller
 {
      
@@ -12,6 +14,7 @@ class ScholarshipController extends Controller
     {
         $this->middleware('auth');
     }
+   
     public function Scholarship()
     {
         $alls = DB::table('scholarships')
@@ -25,21 +28,30 @@ class ScholarshipController extends Controller
         return view ('backend.user.Addscholarship');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        $data = request()->validate([
+       
+        $data = $request->validate([
             'title' => 'required',
             'description' => 'required',
             'image' => ['required','image'],
         ]);
+        $data['title'] = $request->title;
+        $data['description'] = $request->description;
+       
+        if ($request->file('image')){
+            $file = $request->file('image');
 
-        $imagepath = request('image')->store('uploads', 'public');
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('upload/image'),$filename);
+            $data['image'] = $filename;
+        }
+      
+        $insert = DB::table('scholarships')->insert($data);
 
-        auth()->user()->Scholarship()->create([
-            'title' => $data['title'],
-            'description' => $data['description'],
-            'image' => $imagepath,
-        ]);
+
+
+
         $alls = DB::table('scholarships')
         ->get();
         return redirect()->route('Scholarship')->with(compact('alls'));
@@ -57,23 +69,22 @@ class ScholarshipController extends Controller
         $data = $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'image' => ['required','image'],
+            'image' => 'image',
         ]);
-        $data = array();
         $data['title'] = $request->title;
         $data['description'] = $request->description;
-      
-        if (request('image')){
-            $imagepath = request('image')->store('uploads', 'public');
+       
+        if ($request->file('image')){
+            $file = $request->file('image');
+
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('upload/image'),$filename);
+            $data['image'] = $filename;
         }
       
-  
-     
         $update = DB::table('scholarships')
         ->where('id', $id)
-        ->update(array_merge($data, ['image =>  $imagepath']
-
-        ));
+        ->update($data);
         if($update)
         {
            $notifications = array
@@ -97,4 +108,29 @@ class ScholarshipController extends Controller
         }
     }
 
+    public function Deletescholarship($id)
+    {
+        $delete = DB::table('scholarships')->where('id',$id)->delete();
+        if($delete)
+        {
+           $notifications = array
+           (
+            'messege'=>'Successfully User Deleted',
+            'alert-type'=>'info'
+
+           );
+           return redirect()->route('Scholarship')->with($notifications);
+
+        }
+        else
+        {
+            $notifications = array
+           (
+            'messege'=>'Something is wrong,please try again',
+            'alert-type'=>'error'
+
+           );
+           return redirect()->route('Scholarship')->with($notifications);
+        }
+    }
 }
