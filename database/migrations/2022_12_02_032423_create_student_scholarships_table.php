@@ -15,17 +15,15 @@ return new class extends Migration
     {
         Schema::create('student_scholarships', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
             $table->string('First_Name');
             $table->string('Last_Name');
             $table->string('Phone_number');
             $table->string('Address');
-            $table->integer('Age');
-            $table->integer('School_Name');
-           
+            $table->string('School_Name');
+            $table->string('Status')->default('Pending');
             $table->timestamps();
 
-            $table->index('user_id');
+         
         });
     }
 

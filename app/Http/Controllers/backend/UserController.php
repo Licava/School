@@ -206,11 +206,7 @@ class UserController extends Controller
 
         return view ('backend.layouts.dashboard', compact('students', 'admin','users', 'scholarshipss'));
     }
-    public function Apply()
-    {
-        
-        return view ('backend.user.applyscholarship');
-    }
+ 
     public function Changepassword()
     {
         $id = Auth::user()->id;

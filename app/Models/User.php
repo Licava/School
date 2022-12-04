@@ -49,7 +49,7 @@ class User extends Authenticatable
     }
     public function student_scholarship()
     {
-        return $this->hasOne(student_scholarship::class);
+        return $this->hasMany(student_scholarship::class);
     }
     
 }

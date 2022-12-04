@@ -215,7 +215,7 @@
                   <a href="/Scholarship" class="btn btn-info" >Cancel</a>
                 </div>
                 </div>
-              </form>
+            
             </div>
         <!-- /.card-body -->
        

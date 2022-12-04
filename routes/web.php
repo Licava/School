@@ -36,6 +36,7 @@ Route::post('/Update-user/{id}', [App\Http\Controllers\backend\UserController::c
 Route::post('Updateprofile', [App\Http\Controllers\backend\UserController::class, 'Updateprofile'])->name('Updateprofile');
 
 Route::get('/delete-user/{id}', [App\Http\Controllers\backend\UserController::class, 'Deleteuser'])->name('DeleteUser');
+
 Route::post('/p', [App\Http\Controllers\ScholarshipController::class, 'Store'])->name('Store');
 
 Route::get('/Scholarship', [App\Http\Controllers\ScholarshipController::class, 'Scholarship'])->name('Scholarship');
@@ -49,6 +50,12 @@ Route::get('/delete-scholarship/{id}', [App\Http\Controllers\ScholarshipControll
 Route::get('/AddScholarship', [App\Http\Controllers\ScholarshipController::class, 'AddScholarship'])->name('AddScholarship');
 
 
+Route::post('/applying', [App\Http\Controllers\student_scholarship::class, 'applying'])->name('applying');
+
+Route::get('/Apply', [App\Http\Controllers\student_scholarship::class, 'Apply'])->name('Apply');
+
+
+
 
 Route::get('/Profile', [App\Http\Controllers\backend\UserController::class, 'profile'])->name('profile');
 
@@ -56,7 +63,7 @@ Route::get('/Changepassword', [App\Http\Controllers\backend\UserController::clas
 
 Route::get('/Dashboard', [App\Http\Controllers\backend\UserController::class, 'dashboard'])->name('dashboard');
 
-Route::get('/Apply', [App\Http\Controllers\backend\UserController::class, 'Apply'])->name('Apply');
+
 
 
 Route::post('/Updatepassword', [App\Http\Controllers\backend\UserController::class, 'Updatepassword'])->name('Updatepassword');

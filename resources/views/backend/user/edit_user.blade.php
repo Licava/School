@@ -217,6 +217,7 @@
                         <select  class="form-control" id="exampleFormControlSelect1" name="role"  required>
                         <option value="Admin" {{'Admin' == $edit-> role ? 'selected' : ''}}>Admin</option>
                         <option value="Student" {{'Student' == $edit-> role ? 'selected' : ''}}>Student</option>
+                        
                         </select>
                         </div>
                       </div>
