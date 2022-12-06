@@ -138,13 +138,12 @@
               <p>&nbsp</p>
             </div>
           </div>
-          @if(auth()-> user() ->role=='Admin')
           <div class="col-sm-12 d-flex justify-content-between">
           <a></a>
         
-            <a href="{{ URL::to('/AddScholarship') }}" class="btn btn-sm btn-success" >Add Scholarship</a>
+            <a href="" class="btn btn-sm btn-success" >Add Scholarship</a>
           </div>
-          @endif
+   
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -155,67 +154,49 @@
         <div class="card-body pb-0">
           <div class="row">
       
-            @foreach($alls as $Scholarship)
+          @foreach($ikawna as $Applicants)
             <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
               <div class="card bg-light d-flex flex-fill">
-                
+         
                 <div class="card-header text-muted border-bottom-0">
-                  Digital Strategist
+                {{ $Applicants->School_Name}} 
                 </div>
                 <div class="card-body pt-0">
                   <div class="row">
                     <div class="col-7">
-                      <h2 class="lead"><b> {{ $Scholarship->title}} </b></h2>
-                      <p class="text-muted text-sm"><b>About: </b>  </p>
+                      <h2 class="lead"><b> {{$Applicants->First_Name  }} </b></h2>
+                      <p class="text-muted text-sm"><b>Address: {{ $Applicants->Address}} </b>  </p>
                       <ul class="ml-4 mb-0 fa-ul text-muted">
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> </li>
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Student ID #: {{$Applicants->user_id}}</li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #:  {{$Applicants->Phone_number}} </li>
                       </ul>
                     </div>
                     <div class="col-5 text-center">
-                      <img src="{{(!empty($Scholarship->image))? url('upload/image/'.$Scholarship->image):url('upload/no_image.jpg')}}" alt="user-avatar" class="img-circle img-fluid">
+                      <img src="" alt="user-avatar" class="img-circle img-fluid">
                     </div>
                   </div>
                 </div>
-                @if(auth()-> user() ->role=='Admin')
+         
                 <div class="card-footer">
-                  <div class="text-right">
+                  <div class="text-right ">
                 
-                  <a href="  {{ URL::to('/delete-scholarship/'.$Scholarship->id) }}" class="btn btn-sm btn-danger" id="delete">
-                      <i class="fas fa-comments"></i> Delete
+                <div class=" d-flex justify-content-between">
+                  <a href="  " class="btn btn-sm btn-success">
+                      <i class="fas fa-circle "></i> Status :  {{$Applicants->Status}}
                     </a>
-                  <a href="  {{ URL::to('/Scholarship/'.$Scholarship->id) }}" class="btn btn-sm btn-primary">
-                      <i class="fas fa-comments"></i> Edit
+                    <a href="" class="btn btn-sm btn-primary">
+                      <i class="fas fa-user"></i> Approve
                     </a>
-                    <a href="/Applicants" class="btn btn-sm btn-info">
-                      <i class="fas fa-comments"></i> View Applicants
-                    </a>
-                   
+                    </div>
                   </div>
                 </div>
-                @endif
-                @if(auth()-> user() ->role=='Student')
-                <div class="card-footer">
-           
-                  <div class="text-right">
-                
-                  <i class=" fas fa-solid fa-circle d-inline "   style = "color:#0BDA51">{{auth()-> user()->student->Status ?? ''}}</i>
               
-                  <a href="#" class="btn btn-sm btn-success">
-                    
-                      <i class="fas fa-comments"></i> Details
-                    </a>
-                    <a href="/Apply" class="btn btn-sm btn-danger ">
-                      <i class="fas fa-comments"></i>Apply
-                    </a>
-                
-                  </div>
-                </div>
-               @endif
+ 
+            
               </div>
             </div>
+      
             @endforeach
-            
           </div>
         </div>
         <!-- /.card-body -->

@@ -13,18 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('student_scholarships', function (Blueprint $table) {
+        Schema::create('students', function (Blueprint $table) {
             $table->id();
+           
             $table->unsignedBigInteger('user_id');
-            $table->string('First_Name');
-            $table->string('Last_Name');
-            $table->string('Phone_number');
-            $table->string('Address');
-            $table->string('School_Name');
-            $table->string('Status')->default('Pending');
+            $table->string('First_Name')->nullable();
+            $table->string('Last_Name')->nullable();
+            $table->string('Phone_number')->nullable();
+            $table->string('Address')->nullable();
+            $table->string('School_Name')->nullable();
+            $table->string('Status')->default('Pending')->nullable();
             $table->timestamps();
 
             $table->index('user_id');
+     
+           
         });
     }
 
@@ -35,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('student_scholarships');
+        Schema::dropIfExists('students');
     }
 };

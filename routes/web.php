@@ -50,11 +50,11 @@ Route::get('/delete-scholarship/{id}', [App\Http\Controllers\ScholarshipControll
 Route::get('/AddScholarship', [App\Http\Controllers\ScholarshipController::class, 'AddScholarship'])->name('AddScholarship');
 
 
-Route::post('/applying', [App\Http\Controllers\student_scholarship::class, 'applying'])->name('applying');
+Route::post('/applying', [App\Http\Controllers\StudentController::class, 'applying'])->name('applying');
 
-Route::get('/Apply', [App\Http\Controllers\student_scholarship::class, 'Apply'])->name('Apply');
+Route::get('/Apply', [App\Http\Controllers\StudentController::class, 'Apply'])->name('Apply');
 
-
+Route::get('/Applicants', [App\Http\Controllers\StudentController::class, 'Applicants'])->name('Applicants');
 
 
 Route::get('/Profile', [App\Http\Controllers\backend\UserController::class, 'profile'])->name('profile');

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use DB;
 use App\Models\User;
 use App\Models\Scholarship;
+use App\Models\Student;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;

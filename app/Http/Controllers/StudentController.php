@@ -1,14 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use DB;
+use App\Models\student_scholarship;
 use App\Models\User;
 use App\Models\Scholarship;
+use DB;
+use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\Auth;
-class student_scholarship extends Controller
+class StudentController extends Controller
 {
     public function __construct()
     {
@@ -29,25 +28,27 @@ class student_scholarship extends Controller
             'Last_Name' => 'required',
             'Phone_number' => 'required',
             'Address' => 'required',
-
             'School_Name' => 'required',
    
         ]);
-        $data['First_Name'] = $request->First_Name;
-        $data['Last_Name'] = $request->Last_Name;
-        $data['Phone_number'] = $request->Phone_number;
-        $data['Address'] = $request->Address;
-        $data['School_Name'] = $request->School_Name;
-       
-       
-        $insert = DB::table('student_scholarships')->insert($data);
+        auth()->user()->student()->create($data);
 
 
 
 
-        $sana_all= DB::table('student_scholarships')
+        $sana_all= DB::table('students')
         ->get();
         return redirect()->route('Scholarship')->with(compact('sana_all'));
         
     }
+
+    public function Applicants()
+    {   
+        $ikawna = DB::table('students')->get();
+    
+        return view ('backend.user.Applicants', compact('ikawna'));
+        
+        
+    }
+
 }
