@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\User;
 use App\Models\Scholarship;
+use App\Models\student_scholarship;
 use Illuminate\Support\Facades\Auth;
 class ScholarshipController extends Controller
 {
@@ -16,11 +19,17 @@ class ScholarshipController extends Controller
     }
    
     public function Scholarship()
-    {
+    {   
+        $id = Auth::user()->id;
+        $userdata = User::find($id);
+       $user = DB::table('users')
+       ->get();
         $alls = DB::table('scholarships')
         ->get();
-        return view ('backend.user.scholarship', compact('alls'));
-      
+        $ikawna = DB::table('students')
+        ->get();
+        return view ('backend.user.scholarship', ['user' => $user, 'alls' =>  $alls , 'ikawna' => $ikawna , 'userid' => $userdata]);
+        
         
     }
     public function AddScholarship()
