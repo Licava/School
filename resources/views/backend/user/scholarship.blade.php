@@ -202,16 +202,20 @@
                   <i class=" fas fa-solid fa-circle d-inline "   style = "color:#0BDA51">{{auth()-> user()->student->Status ?? ''}}</i>
               
                   <a href="#" class="btn btn-sm btn-success">
-                    
                       <i class="fas fa-comments"></i> Details
                     </a>
-                    <a href="/Apply" class="btn btn-sm btn-danger ">
+                    @if( auth()-> user() ->id != auth()->user()->student?->user_id)
+                    <a href="/Apply" class ="btn btn-sm btn-danger">
                       <i class="fas fa-comments"></i>Apply
-                    </a>
-                
+</a>
+                   @endif
+                   
                   </div>
                 </div>
+           
                @endif
+
+               
               </div>
             </div>
             @endforeach
