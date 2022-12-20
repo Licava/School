@@ -49,7 +49,7 @@ class User extends Authenticatable
     }
     public function Scholarship()
     {
-        return $this->hasMany(Scholarship::class);
+        return $this->hasOne(Scholarship::class);
     }
    
     

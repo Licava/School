@@ -124,6 +124,7 @@ class UserController extends Controller
     public function DeleteUser($id)
     {
         $delete = DB::table('users')->where('id',$id)->delete();
+    
         if($delete)
         {
            $notifications = array

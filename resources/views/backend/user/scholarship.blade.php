@@ -200,12 +200,12 @@
                   <div class="text-right">
                 
                   <i class=" fas fa-solid fa-circle d-inline "   style = "color:#0BDA51">{{auth()-> user()->student->Status ?? ''}}</i>
-              
+                  <i class=" fas fa-solid fa-circle d-inline "   style = "color:#0BDA51">{{$Scholarship->id != auth()->user()->student?->scholarship_id }}</i>
                   <a href="#" class="btn btn-sm btn-success">
                       <i class="fas fa-comments"></i> Details
                     </a>
-                    @if( auth()-> user() ->id != auth()->user()->student?->user_id)
-                    <a href="/Apply" class ="btn btn-sm btn-danger">
+                    @if( $Scholarship->id != auth()->user()->student?->scholarship_id )
+                    <a href="  {{ URL::to('/Apply/'.$Scholarship->id) }}"class ="btn btn-sm btn-danger">
                       <i class="fas fa-comments"></i>Apply
 </a>
                    @endif

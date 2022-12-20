@@ -47,7 +47,8 @@ class ScholarshipController extends Controller
         ]);
         $data['title'] = $request->title;
         $data['description'] = $request->description;
-       
+        $data['created_at'] = date('Y-m-d H:i;s');
+        $data['updated_at'] = date('Y-m-d H:i;s');
         if ($request->file('image')){
             $file = $request->file('image');
 
@@ -82,7 +83,8 @@ class ScholarshipController extends Controller
         ]);
         $data['title'] = $request->title;
         $data['description'] = $request->description;
-       
+        $data['created_at'] = date('Y-m-d H:i;s');
+        $data['updated_at'] = date('Y-m-d H:i;s');
         if ($request->file('image')){
             $file = $request->file('image');
 

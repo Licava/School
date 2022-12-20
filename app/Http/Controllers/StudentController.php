@@ -14,13 +14,13 @@ class StudentController extends Controller
         $this->middleware('auth');
     }
    
-    public function Apply()
+    public function Apply($id)
     {
-        
-        return view ('backend.user.applyscholarship');
+        $data = DB::table('scholarships')->where('id',$id)->first();
+        return view ('backend.user.applyscholarship',  compact('data'));
     }
 
-    public function applying(Request $request)
+    public function applying(Request $request, $id)
     {
        
         $data = $request->validate([
@@ -31,7 +31,20 @@ class StudentController extends Controller
             'School_Name' => 'required',
    
         ]);
-        auth()->user()->student()->create($data);
+        
+  
+        
+        $data['First_Name'] = $request->First_Name;
+        $data['Last_Name'] = $request->Last_Name;
+        $data['Phone_number'] = $request->Phone_number;
+        $data['Address'] = $request->Address;
+        $data['user_id'] =  auth()->id();
+        $data['scholarship_id'] = $request->id;
+        $data['created_at'] = date('Y-m-d H:i;s');
+        $data['updated_at'] = date('Y-m-d H:i;s');
+        
+        $insert = DB::table('students')->insert($data);
+   
 
 
 
