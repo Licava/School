@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
            
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('scholarship_id');
             $table->string('First_Name')->nullable();
             $table->string('Last_Name')->nullable();
             $table->string('Phone_number')->nullable();
@@ -24,8 +25,10 @@ return new class extends Migration
             $table->string('School_Name')->nullable();
             $table->string('Status')->default('Pending')->nullable();
             $table->timestamps();
-
-            $table->index('user_id');
+           
+           
+      
+            $table->index(['user_id', 'scholarship_id']);
      
            
         });
