@@ -1,13 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | User Profile</title>
 
-@extends('backend.layouts.app')
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-info navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="../../index3.html" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">Contact</a>
+      </li>
+    </ul>
 
-@section('content')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item">
+        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+          <i class="fas fa-th-large"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
 
-<aside class="main-sidebar sidebar-dark-success elevation-4">
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-warning elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="{{('backend/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Scholarship</span>
     </a>
 
@@ -19,7 +57,7 @@
           <img src="{{(!empty(auth()->user()->profile_image))? url(  'upload/profile_image/'.auth()->user()->profile_image):url('upload/no_image.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="{{URL::to('/Dashboard')}}" class="d-block">{{auth()-> user() ->name}}</a>
+          <a href="{{URL::to('/home')}}" class="d-block">{{auth()-> user() ->name}}</a>
         </div>
       </div>
 
@@ -41,7 +79,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{URL::to('/Dashboard')}}" class="nav-link">
+            <a href="{{URL::to('/home')}}" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -52,7 +90,7 @@
            @if(auth()-> user() ->role=='Admin')
           
           <li class="nav-item">
-            <a href= "{{URL::to('/User')}}" class="nav-link">
+            <a href= "{{URL::to('/User')}}" class="nav-link active">
               <i class="nav-icon fas fa-user"></i>
               <p>
                Users
@@ -60,13 +98,14 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href= "{{URL::to('/AddUser-index')}}"class="nav-link  ">
+            <a href= "{{URL::to('/AddUser-index')}}" class="nav-link">
               <i class="nav-icon fas fa-user-plus"></i>
               <p>
                Add Users
               </p>
             </a>
           </li>
+          
            @endif
            <li class="nav-item">
             <a href="{{URL::to('/Profile')}}" class="nav-link">
@@ -86,13 +125,12 @@
           </li>
           <li class="nav-header">Services</li>
           <li class="nav-item">
-          <a href="{{URL::to('/Scholarship')}}" class="nav-link active">
+          <a href="{{URL::to('/Scholarship')}}" class="nav-link">
               <i class="nav-icon fas fa-folder-open"></i>
               <p>
                 Scholarship
               </p>  
             </a>
-            </li>
           <li class="nav-item">
           <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -103,18 +141,14 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
-                                        </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
   </aside>
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
   <!-- /.control-sidebar -->
-</div>
+
 
  <!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper">
@@ -167,12 +201,12 @@
                       <h2 class="lead"><b> {{$Applicants->First_Name  }} </b></h2>
                       <p class="text-muted text-sm"><b>Address: {{ $Applicants->Address}} </b>  </p>
                       <ul class="ml-4 mb-0 fa-ul text-muted">
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Student ID #: {{$Applicants->user_id}}</li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Student ID #: {{$Applicants->scholarship_id}}</li>
                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #:  {{$Applicants->Phone_number}} </li>
                       </ul>
                     </div>
                     <div class="col-5 text-center">
-                      <img src="" alt="user-avatar" class="img-circle img-fluid">
+                      <img  src="{{(!empty($Applicants->user->profile_image))? url('upload/profile_image/'.$Applicants->user->profile_image):url('upload/no_image.jpg')}}"alt="user-avatar" class="img-circle img-fluid">
                     </div>
                   </div>
                 </div>
@@ -216,4 +250,15 @@
       <b>Version</b> 3.2.0
     </div>
   </footer>
-  @endsection
+ 
+
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+</body>
+</html>

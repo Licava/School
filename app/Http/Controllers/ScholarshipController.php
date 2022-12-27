@@ -9,6 +9,7 @@ use DB;
 use App\Models\User;
 use App\Models\Scholarship;
 use App\Models\student_scholarship;
+use App\Models\Student;
 use Illuminate\Support\Facades\Auth;
 class ScholarshipController extends Controller
 {
@@ -18,18 +19,16 @@ class ScholarshipController extends Controller
         $this->middleware('auth');
     }
    
-    public function Scholarship()
+    public function Scholarship(Scholarship $Scholarship)
     {   
         $id = Auth::user()->id;
         $userdata = User::find($id);
        $user = DB::table('users')
        ->get();
-        $alls = DB::table('scholarships')
-        ->get();
+        $alls =  Scholarship::get();	
         $ikawna = DB::table('students')
         ->get();
-        return view ('backend.user.scholarship', ['user' => $user, 'alls' =>  $alls , 'ikawna' => $ikawna , 'userid' => $userdata]);
-        
+        return view ('backend.user.scholarship', compact('userdata', 'user','alls', 'ikawna' , 'Scholarship'));
         
     }
     public function AddScholarship()
@@ -45,10 +44,7 @@ class ScholarshipController extends Controller
             'description' => 'required',
             'image' => ['required','image'],
         ]);
-        $data['title'] = $request->title;
-        $data['description'] = $request->description;
-        $data['created_at'] = date('Y-m-d H:i;s');
-        $data['updated_at'] = date('Y-m-d H:i;s');
+       
         if ($request->file('image')){
             $file = $request->file('image');
 
@@ -57,7 +53,7 @@ class ScholarshipController extends Controller
             $data['image'] = $filename;
         }
       
-        $insert = DB::table('scholarships')->insert($data);
+     Auth()->user()->Scholarship()->create($data);
 
 
 

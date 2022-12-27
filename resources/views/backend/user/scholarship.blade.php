@@ -170,6 +170,8 @@
                       <ul class="ml-4 mb-0 fa-ul text-muted">
                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> </li>
                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Address : Sa tabing dagat</li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-user"></i></span> Manage By: {{$Scholarship->user->name}}</li>
                       </ul>
                     </div>
                     <div class="col-5 text-center">
@@ -187,7 +189,7 @@
                   <a href="  {{ URL::to('/Scholarship/'.$Scholarship->id) }}" class="btn btn-sm btn-primary">
                       <i class="fas fa-comments"></i> Edit
                     </a>
-                    <a href="/Applicants" class="btn btn-sm btn-info">
+                    <a href="{{ URL::to('/Applicants/'.$Scholarship->id) }}" class="btn btn-sm btn-info">
                       <i class="fas fa-comments"></i> View Applicants
                     </a>
                    
@@ -204,7 +206,7 @@
                   <a href="#" class="btn btn-sm btn-success">
                       <i class="fas fa-comments"></i> Details
                     </a>
-                    @if( $Scholarship->id != auth()->user()->student?->scholarship_id )
+                    @if( $Scholarship->id != auth()->user()->student ?->scholarship_id )
                     <a href="  {{ URL::to('/Apply/'.$Scholarship->id) }}"class ="btn btn-sm btn-danger">
                       <i class="fas fa-comments"></i>Apply
 </a>

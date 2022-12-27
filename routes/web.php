@@ -54,7 +54,7 @@ Route::post('/applying/{id}', [App\Http\Controllers\StudentController::class, 'a
 
 Route::get('/Apply/{id}', [App\Http\Controllers\StudentController::class, 'Apply'])->name('Apply');
 
-Route::get('/Applicants', [App\Http\Controllers\StudentController::class, 'Applicants'])->name('Applicants');
+Route::get('/Applicants/{id}', [App\Http\Controllers\StudentController::class, 'Applicants'])->name('Applicants');
 
 
 Route::get('/Profile', [App\Http\Controllers\backend\UserController::class, 'profile'])->name('profile');

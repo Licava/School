@@ -27,8 +27,9 @@ return new class extends Migration
             $table->timestamps();
            
            
-      
-            $table->index(['user_id', 'scholarship_id']);
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('scholarship_id')->references('id')->on('scholarships')->onDelete('cascade');
+          
      
            
         });

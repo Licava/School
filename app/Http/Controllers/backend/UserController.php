@@ -123,7 +123,7 @@ class UserController extends Controller
   
     public function DeleteUser($id)
     {
-        $delete = DB::table('users')->where('id',$id)->delete();
+        $delete = User::where('id',$id)->delete();
     
         if($delete)
         {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\student_scholarship;
 use App\Models\User;
 use App\Models\Scholarship;
+use App\Models\Student;
 use DB;
 use Illuminate\Http\Request;
 
@@ -34,16 +35,11 @@ class StudentController extends Controller
         
   
         
-        $data['First_Name'] = $request->First_Name;
-        $data['Last_Name'] = $request->Last_Name;
-        $data['Phone_number'] = $request->Phone_number;
-        $data['Address'] = $request->Address;
-        $data['user_id'] =  auth()->id();
+    
         $data['scholarship_id'] = $request->id;
-        $data['created_at'] = date('Y-m-d H:i;s');
-        $data['updated_at'] = date('Y-m-d H:i;s');
-        
-        $insert = DB::table('students')->insert($data);
+       
+        Auth()->user()->student()->create($data);
+       
    
 
 
@@ -55,9 +51,10 @@ class StudentController extends Controller
         
     }
 
-    public function Applicants()
+    public function Applicants(Scholarship $tudent, $id)
     {   
-        $ikawna = DB::table('students')->get();
+        $ikawna = Student::where('scholarship_id', '=', $id)->get();
+        	
     
         return view ('backend.user.Applicants', compact('ikawna'));
         
