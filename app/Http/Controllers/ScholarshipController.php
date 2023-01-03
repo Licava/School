@@ -40,11 +40,11 @@ class ScholarshipController extends Controller
     {
        
         $data = $request->validate([
-            'title' => 'required',
-            'description' => 'required',
+          
             'image' => ['required','image'],
         ]);
-       
+        $data['title'] = $request->title;
+        $data['description'] = $request->description;
         if ($request->file('image')){
             $file = $request->file('image');
 
@@ -73,8 +73,7 @@ class ScholarshipController extends Controller
     {   
     
         $data = $request->validate([
-            'title' => 'required',
-            'description' => 'required',
+          
             'image' => 'image',
         ]);
         $data['title'] = $request->title;

@@ -51,11 +51,42 @@ class StudentController extends Controller
         
     }
 
-    public function Applicants(Scholarship $tudent, $id)
+    public function Applicants(Student $tudent, $id)
     {   
-        $ikawna = Student::where('scholarship_id', '=', $id)->get();
-        	
-    
+        $userdata = Scholarship::find($id);
+       
+        if( $tudent->School_Name !=  $userdata?->title)
+        {
+          
+       
+            $ikawna = Student::where([
+                ['scholarship_id', '=', $id],
+                ['School_Name', '=', $userdata->title],
+            ])
+            ->get();
+           
+
+        } 
+        elseif($tudent->Address !=  $userdata?->description)
+        {
+        
+            $ikawna = Student::where([
+                ['scholarship_id', '=', $id],
+                ['Address', '=', $userdata->description],
+            ])
+            ->get();
+        }               
+        else
+        {
+           
+            $ikawna = Student::where([
+                ['scholarship_id', '=', $id],
+                ['School_Name', '=', $userdata->title],
+                ['Address', '=', $userdata->description],
+            ])
+            ->get();
+        }
+      
         return view ('backend.user.Applicants', compact('ikawna'));
         
         

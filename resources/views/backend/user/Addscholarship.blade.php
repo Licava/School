@@ -158,6 +158,7 @@
               <form action="/p" enctype="multipart/form-data" method="post">
                 @csrf
                 <div class="card-body">
+
                   <div class="form-group">
                     <label for="exampleInputEmail1">Scholarship Name</label>
                     <input type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : ''}} " name="title" id="title" 
@@ -195,7 +196,19 @@
                                 @endif
  
                         </div>
-                 
+                        <p></p>
+
+                          <!-- /.card-body
+                        <div class="form-group">
+                        <label for="exampleInputEmail1" >Role</label>
+                       
+                        <select  class="form-control" id="exampleFormControlSelect1" name="role"  required>
+                        <option value="Admin" >Admin</option>
+                        <option value="Student" >Student</option>
+                        
+                        </select>
+                       
+                      </div>   -->
                 <!-- /.card-body -->
                 <div class="form-group">
               
