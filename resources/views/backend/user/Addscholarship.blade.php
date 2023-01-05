@@ -197,7 +197,45 @@
  
                         </div>
                         <p></p>
+                        <div class="form-group">
+                        <label class="col-form-label" for="inputWarning"><i class="far fa-bell"></i> Set a Criteria</label>
+                        <p>You can set one or more criteria to find the right applicants </p>
+                        </div>
+                        <div class="form-group">
+                     
+<div class="custom-control custom-switch">
+<input type="checkbox" class="custom-control-input" id="customSwitch1" for="customSwitch1"  checked="checked" >
+<label class="custom-control-label" for="customSwitch1">Location</label>
+</div>
+</div>
+<div class="form-group">
 
+<input type="text" class="form-control is-warning" id="inputWarning" placeholder="Enter ..." disabled="disabled" name="address">
+</div>
+
+<div class="form-group">
+                       
+<div class="custom-control custom-switch">
+<input type="checkbox" class="custom-control-input" id="customSwitch2" for="customSwitch2" checked="checked" >
+<label class="custom-control-label" for="customSwitch2">GWA</label>
+</div>
+</div>
+<div class="form-group">
+
+<input type="text" class="form-control is-warning" id="inputWarning2" placeholder="Enter ..." disabled="disabled" name="grade">
+</div>
+
+<div class="form-group">
+                       
+<div class="custom-control custom-switch">
+<input type="checkbox" class="custom-control-input" id="customSwitch3" for="customSwitch3" checked="checked" >
+<label class="custom-control-label" for="customSwitch3">Parent Income Monthly</label>
+</div>
+</div>
+<div class="form-group">
+
+<input type="number" class="form-control is-warning" id="inputWarning3" placeholder="Enter ..." disabled="disabled" name="Parent_Income">
+</div>
                           <!-- /.card-body
                         <div class="form-group">
                         <label for="exampleInputEmail1" >Role</label>
@@ -239,6 +277,57 @@
     </section>
     <!-- /.content -->
   </div>
+  <script type="text/javascript">
+			( function() { // javascript document ready function
+				var firstJavaScriptInput = document.getElementById( 'inputWarning' );
+				var firstJavaScriptCheckbox = document.getElementById( 'customSwitch1' );
+			
+				
+				firstJavaScriptCheckbox.addEventListener( 'click', function() { // do things when the checkbox gets clicked
+					if ( this.checked ) { // check box is checked so disable input and select
+					
+						firstJavaScriptInput.disabled = 'disabled';
+					} else { // checkbox is not checked, make input and select editable
+					
+						firstJavaScriptInput.disabled = '';
+					}
+ 				} );
+			} )();
+		</script>
+    <script type="text/javascript">
+			( function() { // javascript document ready function
+				var firstJavaScriptInput = document.getElementById( 'inputWarning2' );
+				var firstJavaScriptCheckbox = document.getElementById( 'customSwitch2' );
+			
+				
+				firstJavaScriptCheckbox.addEventListener( 'click', function() { // do things when the checkbox gets clicked
+					if ( this.checked ) { // check box is checked so disable input and select
+					
+						firstJavaScriptInput.disabled = 'disabled';
+					} else { // checkbox is not checked, make input and select editable
+					
+						firstJavaScriptInput.disabled = '';
+					}
+ 				} );
+			} )();
+		</script>
+        <script type="text/javascript">
+			( function() { // javascript document ready function
+				var firstJavaScriptInput = document.getElementById( 'inputWarning3' );
+				var firstJavaScriptCheckbox = document.getElementById( 'customSwitch3' );
+			
+				
+				firstJavaScriptCheckbox.addEventListener( 'click', function() { // do things when the checkbox gets clicked
+					if ( this.checked ) { // check box is checked so disable input and select
+					
+						firstJavaScriptInput.disabled = 'disabled';
+					} else { // checkbox is not checked, make input and select editable
+					
+						firstJavaScriptInput.disabled = '';
+					}
+ 				} );
+			} )();
+		</script>
   <script type="text/javascript">
     $(document).ready(function(){
       $('#image').change(function(e){

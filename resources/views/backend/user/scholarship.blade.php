@@ -155,7 +155,7 @@
         <div class="card-body pb-0">
           <div class="row">
       
-            @foreach($alls as $Scholarship)
+            @forelse($alls as $Scholarship)
             <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
               <div class="card bg-light d-flex flex-fill">
                 
@@ -201,17 +201,21 @@
            
                   <div class="text-right">
                 
-                  <i class=" fas fa-solid fa-circle d-inline "   style = "color:#0BDA51">{{auth()-> user()->student->Status ?? ''}}</i>
-                  <i class=" fas fa-solid fa-circle d-inline "   style = "color:#0BDA51">{{$Scholarship->id != auth()->user()->student?->scholarship_id }}</i>
+                  <i class=" fas fa-solid fa-circle d-inline "   style = "color:#0BDA51"></i>
+                 
+                   
                   <a href="#" class="btn btn-sm btn-success">
                       <i class="fas fa-comments"></i> Details
                     </a>
-                    @if( $Scholarship->id != auth()->user()->student ?->scholarship_id )
+                   
+                   
+                  
                     <a href="  {{ URL::to('/Apply/'.$Scholarship->id) }}"class ="btn btn-sm btn-danger">
                       <i class="fas fa-comments"></i>Apply
 </a>
-                   @endif
-                   
+           
+                  
+                  
                   </div>
                 </div>
            
@@ -220,7 +224,8 @@
                
               </div>
             </div>
-            @endforeach
+            @empty
+            @endforelse
             
           </div>
         </div>

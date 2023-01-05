@@ -228,6 +228,26 @@
                                     </span>
                                 @endif
               </div>
+              <div class="form-group">
+                <label for="inputEstimatedBudget">Grade</label>
+                <input type="text" class="form-control{{ $errors->has('grade') ? ' is-invalid' : ''}} " name="grade" id="grade" 
+                      value="{{ old('grade') }}"  autocomplete="grade" autofocus>
+                      @if ($errors->has('grade'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('grade')}}</strong>
+                                    </span>
+                                @endif
+              </div>
+              <div class="form-group">
+                <label for="inputEstimatedBudget">Parent Income</label>
+                <input type="number" class="form-control{{ $errors->has('Parent_Income') ? ' is-invalid' : ''}} " name="Parent_Income" id="Parent_Income" 
+                      value="{{ old('Parent_Income') }}"  autocomplete="Parent_Income" autofocus>
+                      @if ($errors->has('Parent_Income'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('Parent_Income')}}</strong>
+                                    </span>
+                                @endif
+              </div>
             </div>
             <!-- /.card-body -->
           </div>

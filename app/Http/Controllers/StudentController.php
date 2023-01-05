@@ -30,7 +30,8 @@ class StudentController extends Controller
             'Phone_number' => 'required',
             'Address' => 'required',
             'School_Name' => 'required',
-   
+            'grade' => 'required',
+            'Parent_Income' => 'required',
         ]);
         
   
@@ -55,36 +56,56 @@ class StudentController extends Controller
     {   
         $userdata = Scholarship::find($id);
        
-        if( $tudent->School_Name !=  $userdata?->title)
+        if( ($tudent->grade !=  $userdata?->grade) )
         {
           
        
             $ikawna = Student::where([
-                ['scholarship_id', '=', $id],
-                ['School_Name', '=', $userdata->title],
+                ['grade', '=',$userdata->grade],
+                ['Scholarship_id', '=', $id],
+              
             ])
             ->get();
            
 
         } 
-        elseif($tudent->Address !=  $userdata?->description)
+        elseif(($tudent->Address !=  $userdata?->address))
         {
         
             $ikawna = Student::where([
-                ['scholarship_id', '=', $id],
-                ['Address', '=', $userdata->description],
+             
+                ['Address', '=', $userdata->address],
+                ['Scholarship_id', '=', $id],
+             
             ])
             ->get();
-        }               
+        }     
+        elseif(($tudent->Parent_Income !=  $userdata?->Parent_Income))
+        {
+        
+            $ikawna = Student::where([
+             
+                ['Parent_Income', '=', $userdata->Parent_Income],
+                ['Scholarship_id', '=', $id],
+             
+            ])
+            ->get();
+        }            
+        elseif(($tudent->grade  !=  $userdata?->grade) && ($tudent->Address != $userdata?->address) )
+        {
+        
+            $ikawna = Student::where([
+                ['Scholarship_id', '=', $id],
+                ['Address', '=', $userdata->address],
+                ['grade', '=',$userdata->grade],
+            ])
+            ->get();
+        }          
+              
         else
         {
            
-            $ikawna = Student::where([
-                ['scholarship_id', '=', $id],
-                ['School_Name', '=', $userdata->title],
-                ['Address', '=', $userdata->description],
-            ])
-            ->get();
+            $ikawna = Student::where([  ['Scholarship_id', '=', $id], ])->get();
         }
       
         return view ('backend.user.Applicants', compact('ikawna'));

@@ -19,18 +19,21 @@ class ScholarshipController extends Controller
         $this->middleware('auth');
     }
    
-    public function Scholarship(Student $student, Scholarship $Scholarship)
+    public function Scholarship( Student $tudent)
     {   
+        
+      
         $id = Auth::user()->id;
         $userdata = User::find($id);
-       $user = DB::table('users')
-       ->get();
+  
+      
+
+
+
         $alls =  Scholarship::get();	
-        $Student =  Student::get();	
-        $ikawna = DB::table('students')
-        ->get();
-        return view ('backend.user.scholarship', compact('userdata', 'user','alls', 'ikawna' , 'Scholarship' , 'Student'));
         
+        return view ('backend.user.scholarship', compact( 'alls' , 'userdata')); 
+
     }
     public function AddScholarship()
     {
@@ -46,6 +49,9 @@ class ScholarshipController extends Controller
         ]);
         $data['title'] = $request->title;
         $data['description'] = $request->description;
+        $data['address'] = $request->address;
+        $data['grade'] = $request->grade;
+        $data['Parent_Income'] = $request->Parent_Income;
         if ($request->file('image')){
             $file = $request->file('image');
 

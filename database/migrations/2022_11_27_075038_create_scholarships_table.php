@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('title')->nullable();
             $table->text('description')->nullable();
             $table->string('image')->nullable();
+            $table->string('address')->nullable();
+            $table->string('grade')->nullable();
+            $table->string('Parent_Income')->nullable();
             $table->timestamps();
 
             $table->index('user_id');

@@ -24,6 +24,9 @@ return new class extends Migration
             $table->string('Address')->nullable();
             $table->string('School_Name')->nullable();
             $table->string('Status')->default('Pending')->nullable();
+          
+            $table->string('grade')->nullable();
+            $table->string('Parent_Income')->nullable();
             $table->timestamps();
            
            
