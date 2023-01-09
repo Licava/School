@@ -208,13 +208,13 @@
                       <i class="fas fa-comments"></i> Details
                     </a>
                    
-                   
+                   @if($Scholarship->id != $Scholarship->student?->scholarship_id)
                   
                     <a href="  {{ URL::to('/Apply/'.$Scholarship->id) }}"class ="btn btn-sm btn-danger">
                       <i class="fas fa-comments"></i>Apply
 </a>
            
-                  
+                  @endif
                   
                   </div>
                 </div>
