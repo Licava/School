@@ -13,10 +13,10 @@ class Student extends Model
     use HasFactory;
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id' ,'id');
+        return $this->belongsToMany(User::class);
     }
     public function scholarship()
     {
-        return $this->belongsTo(Scholarship::class, 'scholarship_id' , 'id');
+        return $this->belongsToMany(Scholarship::class);
     }
 }

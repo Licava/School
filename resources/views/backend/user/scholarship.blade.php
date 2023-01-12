@@ -19,7 +19,7 @@
           <img src="{{(!empty(auth()->user()->profile_image))? url(  'upload/profile_image/'.auth()->user()->profile_image):url('upload/no_image.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="{{URL::to('/Dashboard')}}" class="d-block">{{auth()-> user() ->name}}</a>
+          <a href="{{URL::to('/Dashboard')}}" class="d-block">{{auth()->user()->name}}</a>
         </div>
       </div>
 
@@ -155,7 +155,7 @@
         <div class="card-body pb-0">
           <div class="row">
       
-            @forelse($alls as $Scholarship)
+            @foreach($alls as $Scholarship)
             <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
               <div class="card bg-light d-flex flex-fill">
                 
@@ -169,8 +169,8 @@
                       <p class="text-muted text-sm"><b>About: </b>  </p>
                       <ul class="ml-4 mb-0 fa-ul text-muted">
                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> </li>
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Address : Sa tabing dagat</li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #:{{auth::id()}}</li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Address : {{$Scholarship->student->contains('user_id' , auth::id())}}</li>
                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-user"></i></span> Manage By: {{$Scholarship->user->name}}</li>
                       </ul>
                     </div>
@@ -200,22 +200,19 @@
                 <div class="card-footer">
            
                   <div class="text-right">
-                
+       
                   <i class=" fas fa-solid fa-circle d-inline "   style = "color:#0BDA51"></i>
                  
-                   
+       
                   <a href="#" class="btn btn-sm btn-success">
                       <i class="fas fa-comments"></i> Details
                     </a>
-                   
-                   @if($Scholarship->id != $Scholarship->student?->scholarship_id)
-                  
+            @if(!$Scholarship->student->contains('user_id' , auth::id()))
                     <a href="  {{ URL::to('/Apply/'.$Scholarship->id) }}"class ="btn btn-sm btn-danger">
                       <i class="fas fa-comments"></i>Apply
 </a>
-           
-                  @endif
-                  
+        
+@endif
                   </div>
                 </div>
            
@@ -224,8 +221,8 @@
                
               </div>
             </div>
-            @empty
-            @endforelse
+            
+            @endforeach
             
           </div>
         </div>

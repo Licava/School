@@ -36,8 +36,8 @@ class StudentController extends Controller
         
   
         
-    
         $data['scholarship_id'] = $request->id;
+    
        
         Auth()->user()->student()->create($data);
        

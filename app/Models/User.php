@@ -49,7 +49,7 @@ class User extends Authenticatable
    
     public function student()
     {
-        return $this->hasOne(Student::class, 'user_id' ,'id');
+        return $this->hasMany(Student::class);
     }
    
     

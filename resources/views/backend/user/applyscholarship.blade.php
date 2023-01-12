@@ -259,8 +259,12 @@
     
       <div class="row">
         <div class="col-12">
-       
+
           <button type="submit" class="btn btn-success float-right">Submit</button>
+      
+       
+     
+    
           <a href="/Scholarship" class="btn btn-secondary">Cancel</a>
         </div>
       </div>
@@ -279,6 +283,9 @@
  
 
   <!-- jQuery -->
+  <script>
+
+</script>
 <script src="../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

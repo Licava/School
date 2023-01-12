@@ -17,7 +17,7 @@ class Scholarship extends Model
     
     public function student()
     {
-        return $this->hasOne(Student::class);
+        return $this->hasMany(Student::class);
     }
    
 

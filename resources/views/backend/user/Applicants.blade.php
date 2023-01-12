@@ -11,6 +11,11 @@
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+ 
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -183,75 +188,75 @@
     </section>
   <div></div>
     <!-- Main content -->
-
-      <div class="card card-solid">
-        <div class="card-body pb-0">
-          <div class="row">
-      
-          @foreach($ikawna as $Applicants)
-            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-              <div class="card bg-light d-flex flex-fill">
-         
-                <div class="card-header text-muted border-bottom-0">
-                {{ $Applicants->School_Name}} 
-                </div>
-                <div class="card-body pt-0">
-                  <div class="row">
-                    <div class="col-7">
-                      <h2 class="lead"><b> {{$Applicants->First_Name  }} </b></h2>
-                      <p class="text-muted text-sm"><b>Address: {{ $Applicants->Address}} </b>  </p>
-                      <ul class="ml-4 mb-0 fa-ul text-muted">
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Student ID #: {{$Applicants->scholarship_id}}</li>
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #:  {{$Applicants->Phone_number}} </li>
-                      </ul>
-                    </div>
-                    <div class="col-5 text-center">
-                      <img  src="{{(!empty($Applicants->user->profile_image))? url('upload/profile_image/'.$Applicants->user->profile_image):url('upload/no_image.jpg')}}"alt="user-avatar" class="img-circle img-fluid">
-                    </div>
-                  </div>
-                </div>
-         
-                <div class="card-footer">
-                  <div class="text-right ">
-                
-                <div class=" d-flex justify-content-between">
-                  <a href="  " class="btn btn-sm btn-success">
-                      <i class="fas fa-circle "></i> Status :  {{$Applicants->Status}}
-                    </a>
-                    <a href="" class="btn btn-sm btn-primary">
-                      <i class="fas fa-user"></i> Approve
-                    </a>
-                    </div>
-                  </div>
-                </div>
-              
- 
-            
+    <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Users</h3>
+              </div>
+              <!-- /.card-header -->
+             <!-- /.card-header -->
+             <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Profile Picture </th>
+                    <th>Action </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                 
+                  @foreach($ikawna as  $key=> $Applicants)
+                  <tr>
+                    <td>{{ $key+1 }}</td>
+                    <td>{{ $Applicants->School_Name}}  </td>
+                    <td> {{ $Applicants->Address}}</td>
+                    <td>{{$Applicants->Phone_number}}</td>
+                    <td><img  src="{{(!empty($Applicants->profile_image))? url(  'upload/profile_image/'.$Applicants->profile_image):url('upload/no_image.jpg')}}" alt="user-avatar" class="profile-user-img img-fluid img-circle">
+                    </td>
+                    <td>
+                    <a href="{{ URL::to('/Edit-User/'.$Applicants->id) }}" class="btn btn-sm btn-info">Edit</a>
+                    <a href="{{ URL::to('/delete-user/'.$Applicants->id) }}" class="btn btn-sm btn-danger" id="delete">Delete</a>
+                        
+                    </td>
+                  </tr>
+                  @endforeach
+                 
+                </table>
               </div>
             </div>
-      
-            @endforeach
-          </div>
-        </div>
-        <!-- /.card-body -->
-       
-        <!-- /.card-footer -->
-      </div>
-      <!-- /.card -->
 
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
-    </div>
-  </footer>
- 
 
+
+ <!-- DataTables  & Plugins -->
+<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="../../plugins/jszip/jszip.min.js"></script>
+<script src="../../plugins/pdfmake/pdfmake.min.js"></script>
+<script src="../../plugins/pdfmake/vfs_fonts.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+   
+  });
+</script>
 <!-- jQuery -->
 <script src="../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -260,5 +265,6 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+
 </body>
 </html>
