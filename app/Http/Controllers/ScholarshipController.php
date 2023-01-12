@@ -19,20 +19,18 @@ class ScholarshipController extends Controller
         $this->middleware('auth');
     }
    
-    public function Scholarship( Student $tudent)
+    public function Scholarship()
     {   
         
       
         $id = Auth::user()->id;
-        $userdata = User::find($id);
+
+
+        
+
+        $alls =  Scholarship::get();
   
-      
-
-
-
-        $alls =  Scholarship::get();	
-       
-        return view ('backend.user.scholarship', compact( 'alls' , 'userdata')); 
+        return view ('backend.user.scholarship', compact( 'alls'     )); 
 
     }
     public function AddScholarship()
