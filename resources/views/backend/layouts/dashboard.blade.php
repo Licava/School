@@ -147,7 +147,7 @@
             <div class="small-box bg-info">
               <div class="inner">
         
-                <h3>{{auth()-> user()->where('role', 'Student')->count(); }}</h3>
+                <h3>{{auth()-> user()->where('role', 'Student')->count()}}</h3>
              
                 <p>Number of Students</p>
 
@@ -164,7 +164,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>{{auth()-> user()->where('role', 'Admin')->count(); }}<sup style="font-size: 20px"></sup></h3>
+                <h3>{{auth()-> user()->where('role', 'Admin')->count()}}<sup style="font-size: 20px"></sup></h3>
 
                 <p>Number of Admins</p>
               </div>
@@ -179,7 +179,7 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3> {{auth()-> user()->count(); }}</h3>
+                <h3> {{auth()-> user()->count()}}</h3>
 
                 <p>Total of Users</p>
               </div>

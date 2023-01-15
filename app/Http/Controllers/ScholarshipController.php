@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 class ScholarshipController extends Controller
 {
      
-    public function __construct()
+    public function __construct(Scholarship $Scholarship)
     {
         $this->middleware('auth');
     }
@@ -30,7 +30,7 @@ class ScholarshipController extends Controller
 
         $alls =  Scholarship::get();
   
-        return view ('backend.user.scholarship', compact( 'alls'     )); 
+        return view ('backend.user.scholarship', compact( 'alls'   )); 
 
     }
     public function AddScholarship()

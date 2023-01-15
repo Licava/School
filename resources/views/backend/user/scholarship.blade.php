@@ -154,13 +154,14 @@
       <div class="card card-solid">
         <div class="card-body pb-0">
           <div class="row">
-      
+         
             @foreach($alls as $Scholarship)
+           
             <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
               <div class="card bg-light d-flex flex-fill">
                 
                 <div class="card-header text-muted border-bottom-0">
-                  Digital Strategist
+                 SCHOLARSHIP
                 </div>
                 <div class="card-body pt-0">
                   <div class="row">
@@ -169,8 +170,8 @@
                       <p class="text-muted text-sm"><b>About: </b>  </p>
                       <ul class="ml-4 mb-0 fa-ul text-muted">
                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> </li>
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #:{{auth::id()}}</li>
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Address : {{$Scholarship->student->contains('user_id' , auth::id())}}</li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #:</li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Address : </li>
                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-user"></i></span> Manage By: {{$Scholarship->user->name}}</li>
                       </ul>
                     </div>
@@ -200,13 +201,16 @@
                 <div class="card-footer">
            
                   <div class="text-right">
-       
-                  <i class=" fas fa-solid fa-circle d-inline "   style = "color:#0BDA51"></i>
+                  @if($Scholarship->student->contains('user_id' , auth::id()))
+              
+                  <i class=" fas fa-solid fa-circle d-inline "   style = "color:#0BDA51">{{auth()->user()->student->firstwhere('scholarship_id', $Scholarship->id)?->Status}}</i>
                  
-       
+    
+              @endif
                   <a href="#" class="btn btn-sm btn-success">
                       <i class="fas fa-comments"></i> Details
                     </a>
+              
             @if(!$Scholarship->student->contains('user_id' , auth::id()))
                     <a href="  {{ URL::to('/Apply/'.$Scholarship->id) }}"class ="btn btn-sm btn-danger">
                       <i class="fas fa-comments"></i>Apply
@@ -221,9 +225,13 @@
                
               </div>
             </div>
-            
+        
             @endforeach
             
+         
+        
+   
+
           </div>
         </div>
         <!-- /.card-body -->

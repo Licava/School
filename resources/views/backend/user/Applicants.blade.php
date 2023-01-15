@@ -3,19 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | User Profile</title>
+  <title>AdminLTE 3 | DataTables</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
- 
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -36,7 +35,34 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-    
+      <!-- Navbar Search -->
+      <li class="nav-item">
+        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+          <i class="fas fa-search"></i>
+        </a>
+        <div class="navbar-search-block">
+          <form class="form-inline">
+            <div class="input-group input-group-sm">
+              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+              <div class="input-group-append">
+                <button class="btn btn-navbar" type="submit">
+                  <i class="fas fa-search"></i>
+                </button>
+                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </li>
+
+     
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
           <i class="fas fa-th-large"></i>
@@ -46,8 +72,9 @@
   </nav>
   <!-- /.navbar -->
 
+ 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-warning elevation-4">
+  <aside class="main-sidebar sidebar-dark-success elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -59,7 +86,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{(!empty(auth()->user()->profile_image))? url(  'upload/profile_image/'.auth()->user()->profile_image):url('upload/no_image.jpg')}}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{(!empty(auth()->user()->profile_image))? url('upload/profile_image/'.auth()->user()->profile_image):url('upload/no_image.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="{{URL::to('/home')}}" class="d-block">{{auth()-> user() ->name}}</a>
@@ -95,7 +122,7 @@
            @if(auth()-> user() ->role=='Admin')
           
           <li class="nav-item">
-            <a href= "{{URL::to('/User')}}" class="nav-link active">
+            <a href= "{{URL::to('/User')}}" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
                Users
@@ -130,7 +157,7 @@
           </li>
           <li class="nav-header">Services</li>
           <li class="nav-item">
-          <a href="{{URL::to('/Scholarship')}}" class="nav-link">
+          <a href="{{URL::to('/Scholarship')}}" class="nav-link active">
               <i class="nav-icon fas fa-folder-open"></i>
               <p>
                 Scholarship
@@ -153,49 +180,33 @@
     <!-- /.sidebar -->
   </aside>
   <!-- /.control-sidebar -->
-
-
- <!-- Content Wrapper. Contains page content -->
- <div class="content-wrapper">
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-        <div class="col-sm-6 ">
-        <h3>Scholarship</h3>
-            
-       
+          <div class="col-sm-6">
+            <h1>Scholarship </h1>
           </div>
           <div class="col-sm-6">
-          <h1></h1>
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Contacts</li>
-             
+              <li class="breadcrumb-item"><a href="">Home</a></li>
+              <li class="breadcrumb-item active">DataTables</li>
             </ol>
-            <div>
-              <p>&nbsp</p>
-            </div>
           </div>
-          <div class="col-sm-12 d-flex justify-content-between">
-          <a></a>
-        
-            <a href="" class="btn btn-sm btn-success" >Add Scholarship</a>
-          </div>
-   
         </div>
       </div><!-- /.container-fluid -->
     </section>
-  <div></div>
-    <!-- Main content -->
-    <div class="card">
+
+  
+            <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Users</h3>
+                <h3 class="card-title">Scholarship Applicants</h3>
               </div>
               <!-- /.card-header -->
-             <!-- /.card-header -->
-             <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+              <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>ID</th>
@@ -214,11 +225,41 @@
                     <td>{{ $Applicants->School_Name}}  </td>
                     <td> {{ $Applicants->Address}}</td>
                     <td>{{$Applicants->Phone_number}}</td>
-                    <td><img  src="{{(!empty($Applicants->profile_image))? url(  'upload/profile_image/'.$Applicants->profile_image):url('upload/no_image.jpg')}}" alt="user-avatar" class="profile-user-img img-fluid img-circle">
+                    <td>
+
+                    <div class="card card-primary card-outline">
+              <div class="card-body box-profile">
+              <div class="text-center">
+                  <img id="showImage" class="profile-user-img img-fluid img-circle"
+                       src="{{(!empty($Applicants->user->profile_image))? url(  'upload/profile_image/'.$Applicants->user->profile_image):url('upload/no_image.jpg')}}"
+                       alt="User profile picture">
+                </div>
+                <h3 class="profile-username text-center">{{ $Applicants->user->name }}</h3>
+
+                <p class="text-muted text-center">{{$Applicants->user->email}}</p>
+
+  
+
+        
+              </div>
+              <!-- /.card-body -->
+            </div>
+
+
+
                     </td>
                     <td>
-                    <a href="{{ URL::to('/Edit-User/'.$Applicants->id) }}" class="btn btn-sm btn-info">Edit</a>
-                    <a href="{{ URL::to('/delete-user/'.$Applicants->id) }}" class="btn btn-sm btn-danger" id="delete">Delete</a>
+                    <div>
+                    <a href=""class ="btn btn-sm btn-success">
+                      <i class="fas fa-comments"></i>&nbsp; Appove
+</a>
+</div>
+<h1></h1>
+<div>
+                    <a href=""class ="btn btn-sm btn-info">
+                      <i class="fas fa-inbox"></i>&nbsp; Details
+</a>
+</div>
                         
                     </td>
                   </tr>
@@ -226,11 +267,34 @@
                  
                 </table>
               </div>
+              <!-- /.card-body -->
             </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
 
 
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
 
- <!-- DataTables  & Plugins -->
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
 <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
@@ -257,14 +321,5 @@
    
   });
 </script>
-<!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
-
 </body>
 </html>
