@@ -169,7 +169,7 @@
               <div class="card-header p-2">
                 <ul class="nav nav-pills">
                   <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Basic Info</a></li>
-                  
+               
                 </ul>
               </div><!-- /.card-header -->
               <div class="card-body">
@@ -181,6 +181,12 @@
                 <div class="active tab-pane" id="activity">
                     <form action="{{URL::to('Updateprofile')}}" method= "post" enctype="multipart/form-data" onsubmit="return submitForm(this);">
                     @csrf
+                   
+                      <div class="form-group row">
+                    
+                    <p  class="col-sm-6 col-form-label">User Information</p>
+                  </div>
+
                       <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">
@@ -199,12 +205,7 @@
                         </div>
                        
                       </div>
-                      <div class="form-group row">
-                        <label for="inputEmail" class="col-sm-2 col-form-label">Phone Number</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control"  name="number" Value="{{$userdata->id}}" required>
-                        </div>
-                      </div>
+                     
                       <div class="form-group row">
                         <label for="inputImage" class="col-sm-2 col-form-label">Image</label>
                         <div class="col-sm-10">
@@ -215,7 +216,7 @@
                         </div>
                       </div>
                       
-                      
+                      @if(auth()-> user() ->role=='Admin')
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
                           <div class="checkbox">
@@ -225,11 +226,117 @@
                           </div>
                         </div>
                       </div>
+                    
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
                           <button type="submit" class="btn btn-success" id="confirm">Submit</button>
                         </div>
                       </div>
+                      @endif
+                      @if(auth()-> user() ->role=='Student')
+                      <div class="form-group row">
+                       
+                        
+                      </div>
+                      <div class="form-group row">
+                        <p  class="col-sm-6 col-form-label">Personal Information</p>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputEmail" class="col-sm-2 col-form-label">Address</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control"  name="Address" Value="{{$userdata?->Address}}" required>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputEmail" class="col-sm-2 col-form-label">City</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control"  name="City" Value="{{$userdata?->City}}" required>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputEmail" class="col-sm-2 col-form-label">Age</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control"  name="Age" Value="{{$userdata?->Age}}" required>
+                        </div>
+                      </div>
+                 
+                      <div class="form-group row">
+                        <label for="inputEmail" class="col-sm-2 col-form-label">Phone Number</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control"  name="Phone_Number" Value="{{$userdata?->Phone_Number}}" required>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                       
+                      </div>
+                     
+                       <div class="form-group row">
+                         <p  class="col-sm-6 col-form-label">School Information</p>
+                       </div>
+
+                      <div class="form-group row">
+                        <label for="inputEmail" class="col-sm-2 col-form-label"> Name of School</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control"  name="Name_School" Value="{{$userdata?->Name_School}}" required>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputEmail" class="col-sm-2 col-form-label">Grade/Course</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control"  name="Grade" Value="{{$userdata?->Grade}}" required>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputEmail" class="col-sm-2 col-form-label"> General Weighted Average</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control"  name="GWA" Value="{{$userdata?->GWA}}" required>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                       
+                       </div>
+                      
+                        <div class="form-group row">
+                          <p  class="col-sm-6 col-form-label">Parent / Guidance Information</p>
+                        </div>
+ 
+                    
+
+                       <div class="form-group row">
+                        <label for="inputEmail" class="col-sm-2 col-form-label"> Parent Guardian Name </label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control"  name="Parent_Name" Value="{{$userdata?->Parent_Name}}" required>
+                        </div>
+                      </div>
+
+
+                      <div class="form-group row">
+                        <label for="inputEmail" class="col-sm-2 col-form-label"> Relationship </label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control"  name="Relationship" Value="{{$userdata?->Relationship}}" required>
+                        </div>
+                      </div>
+
+
+                      <div class="form-group row">
+                        <label for="inputEmail" class="col-sm-2 col-form-label"> Parent Income  Monthly </label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control"  name="Parent_Income" Value="{{$userdata?->Parent_Income}}" required>
+                        </div>
+                      </div>
+
+
+
+
+
+
+                        
+                      <div class="form-group row">
+                        <div class="offset-sm-2 col-sm-10">
+                          <button type="submit" class="btn btn-danger" id="confirm">Update</button>
+                        </div>
+                      </div>
+                      @endif
                     </form>
                   </div>
                   <!-- /.tab-pane -->

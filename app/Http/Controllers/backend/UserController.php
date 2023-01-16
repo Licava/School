@@ -168,6 +168,20 @@ class UserController extends Controller
         $datas = User::findOrFail($id);
         $datas['name'] = $request->name;
         $datas['email'] = $request->email;
+        $datas['Address'] = $request->Address;
+        $datas['City'] = $request->City;
+        $datas['Age'] = $request->Age;
+        $datas['Phone_Number'] = $request->Phone_Number;
+        $datas['Name_School'] = $request->Name_School;
+        $datas['Grade'] = $request->Grade;
+        $datas['GWA'] = $request->GWA;
+        $datas['Parent_Name'] = $request->Parent_Name;
+        $datas['Relationship'] = $request->Relationship;
+        $datas['Parent_Income'] = $request->Parent_Income;
+
+
+
+
         if ($request->file('profile_image')){
             $file = $request->file('profile_image');
 

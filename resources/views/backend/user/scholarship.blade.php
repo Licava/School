@@ -172,7 +172,7 @@
                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> </li>
                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #:</li>
                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Address : </li>
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-user"></i></span> Manage By: {{$Scholarship->user->name}}</li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-user"></i></span> Manage By: {{$Scholarship->user?->name}}</li>
                       </ul>
                     </div>
                     <div class="col-5 text-center">

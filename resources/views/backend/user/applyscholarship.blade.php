@@ -163,7 +163,7 @@
             @csrf
             <div class="card-body">
               <div class="form-group">
-                <label for="inputName">First Name</label>
+                <label for="inputName">Name</label>
                 <input type="text" class="form-control{{ $errors->has('First_Name') ? ' is-invalid' : ''}} " name="First_Name" id="First_Name" 
                       value="{{ old('First_Name') }}"  autocomplete="First_Name" autofocus>
                       @if ($errors->has('First_Name'))
@@ -174,7 +174,7 @@
               </div>
          
           <div class="form-group">
-                <label for="inputName">Last Name</label>
+                <label for="inputName">Email</label>
                 <input type="text" class="form-control{{ $errors->has('Last_Name') ? ' is-invalid' : ''}} " name="Last_Name" id="Last_Name" 
                       value="{{ old('Last_Name') }}"  autocomplete="Last_Name" autofocus>
                       @if ($errors->has('Last_Name'))
@@ -204,14 +204,23 @@
                                 @endif
               </div>
              
-             
+              <div class="form-group">
+                <label for="inputName">Age</label>
+                <input type="text" class="form-control{{ $errors->has('Last_Name') ? ' is-invalid' : ''}} " name="Last_Name" id="Last_Name" 
+                      value="{{ old('Last_Name') }}"  autocomplete="Last_Name" autofocus>
+                      @if ($errors->has('Last_Name'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('Last_Name')}}</strong>
+                                    </span>
+                                @endif
+              </div>
             </div>
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
         </div>
         <div class="col-md-6">
-          <div class="card card-secondary">
+          <div class="card card-success">
             <div class="card-header">
               <h3 class="card-title">School Information</h3>
 
@@ -229,7 +238,7 @@
                                 @endif
               </div>
               <div class="form-group">
-                <label for="inputEstimatedBudget">Grade</label>
+                <label for="inputEstimatedBudget">Grade/Course</label>
                 <input type="text" class="form-control{{ $errors->has('grade') ? ' is-invalid' : ''}} " name="grade" id="grade" 
                       value="{{ old('grade') }}"  autocomplete="grade" autofocus>
                       @if ($errors->has('grade'))
@@ -239,7 +248,7 @@
                                 @endif
               </div>
               <div class="form-group">
-                <label for="inputEstimatedBudget">Parent Income</label>
+                <label for="inputEstimatedBudget">GWA or General Weighted Average</label>
                 <input type="number" class="form-control{{ $errors->has('Parent_Income') ? ' is-invalid' : ''}} " name="Parent_Income" id="Parent_Income" 
                       value="{{ old('Parent_Income') }}"  autocomplete="Parent_Income" autofocus>
                       @if ($errors->has('Parent_Income'))
@@ -248,6 +257,125 @@
                                     </span>
                                 @endif
               </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+   
+          <!-- /.card -->
+        </div>
+        <div class="col-md-6">
+          <div class="card card-secondary">
+            <div class="card-header">
+              <h3 class="card-title">Parent/Guardian Information</h3>
+
+            
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="inputEstimatedBudget">Parent Guardian Name</label>
+                <input type="text" class="form-control{{ $errors->has('School_Name') ? ' is-invalid' : ''}} " name="School_Name" id="School_Name" 
+                      value="{{ old('School_Name') }}"  autocomplete="School_Name" autofocus>
+                      @if ($errors->has('School_Name'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('School_Name')}}</strong>
+                                    </span>
+                                @endif
+              </div>
+              <div class="form-group">
+                <label for="inputEstimatedBudget">Relationship</label>
+                <input type="text" class="form-control{{ $errors->has('grade') ? ' is-invalid' : ''}} " name="grade" id="grade" 
+                      value="{{ old('grade') }}"  autocomplete="grade" autofocus>
+                      @if ($errors->has('grade'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('grade')}}</strong>
+                                    </span>
+                                @endif
+              </div>
+              <div class="form-group">
+                <label for="inputEstimatedBudget">Parent Income Monthly</label>
+                <input type="number" class="form-control{{ $errors->has('Parent_Income') ? ' is-invalid' : ''}} " name="Parent_Income" id="Parent_Income" 
+                      value="{{ old('Parent_Income') }}"  autocomplete="Parent_Income" autofocus>
+                      @if ($errors->has('Parent_Income'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('Parent_Income')}}</strong>
+                                    </span>
+                                @endif
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+   
+          <!-- /.card -->
+        </div>
+        <div class="col-md-6">
+          <div class="card card-success">
+            <div class="card-header">
+              <h3 class="card-title">Files</h3>
+
+            
+            </div>
+            <div class="card-body">
+              
+              <div class="card-body p-0">
+<table class="table">
+<thead>
+<tr>
+<th>File Name</th>
+<th>File Size</th>
+<th></th>
+</tr>
+ </thead>
+<tbody>
+<tr>
+<td>Functional-requirements.docx</td>
+<td>49.8005 kb</td>
+<td class="text-right py-0 align-middle">
+<div class="btn-group btn-group-sm">
+<a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
+<a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+</div>
+</td>
+</tr><tr>
+<td>UAT.pdf</td>
+<td>28.4883 kb</td>
+<td class="text-right py-0 align-middle">
+<div class="btn-group btn-group-sm">
+<a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
+<a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+</div>
+</td>
+</tr><tr>
+<td>Email-from-flatbal.mln</td>
+<td>57.9003 kb</td>
+<td class="text-right py-0 align-middle">
+<div class="btn-group btn-group-sm">
+<a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
+<a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+</div>
+</td>
+</tr><tr>
+<td>Logo.png</td>
+<td>50.5190 kb</td>
+<td class="text-right py-0 align-middle">
+<div class="btn-group btn-group-sm">
+<a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
+<a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+</div>
+</td>
+</tr><tr>
+<td>Contract-10_12_2014.docx</td>
+<td>44.9715 kb</td>
+<td class="text-right py-0 align-middle">
+<div class="btn-group btn-group-sm">
+<a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
+<a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+</div>
+</td>
+</tr></tbody>
+</table>
+</div>
             </div>
             <!-- /.card-body -->
           </div>
