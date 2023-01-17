@@ -164,39 +164,30 @@
             <div class="card-body">
               <div class="form-group">
                 <label for="inputName">Name</label>
-                <input type="text" class="form-control{{ $errors->has('First_Name') ? ' is-invalid' : ''}} " name="First_Name" id="First_Name" 
-                      value="{{ old('First_Name') }}"  autocomplete="First_Name" autofocus>
-                      @if ($errors->has('First_Name'))
+                <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : ''}} " name="name" id="First_Name" 
+                      value="{{ auth()->user()->name }}"  autocomplete="First_Name" autofocus>
+                      @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('First_Name')}}</strong>
+                                        <strong>{{ $errors->first('name')}}</strong>
                                     </span>
                                 @endif
               </div>
          
-          <div class="form-group">
-                <label for="inputName">Email</label>
-                <input type="text" class="form-control{{ $errors->has('Last_Name') ? ' is-invalid' : ''}} " name="Last_Name" id="Last_Name" 
-                      value="{{ old('Last_Name') }}"  autocomplete="Last_Name" autofocus>
-                      @if ($errors->has('Last_Name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('Last_Name')}}</strong>
-                                    </span>
-                                @endif
-              </div>
+         
               <div class="form-group">
                 <label for="inputName">Phone Number</label>
-                <input type="number" class="form-control{{ $errors->has('Phone_number') ? ' is-invalid' : ''}} " name="Phone_number" id="Phone_number" 
-                      value="{{ old('Phone_number') }}"  autocomplete="Phone_number" autofocus>
-                      @if ($errors->has('Phone_number'))
+                <input type="number" class="form-control{{ $errors->has('Phone_Number') ? ' is-invalid' : ''}} " name="Phone_Number" id="Phone_number" 
+                      value="{{ auth()->user()->Phone_Number }}"  autocomplete="Phone_Number" autofocus>
+                      @if ($errors->has('Phone_Number'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('Phone_number')}}</strong>
+                                        <strong>{{ $errors->first('Phone_Number')}}</strong>
                                     </span>
                                 @endif
               </div>
               <div class="form-group">
                 <label for="inputName">Address</label>
                 <input type="text" class="form-control{{ $errors->has('Address') ? ' is-invalid' : ''}} " name="Address" id="Address" 
-                      value="{{ old('Address') }}"  autocomplete="Address" autofocus>
+                      value="{{ auth()->user()->Address }}"  autocomplete="Address" autofocus>
                       @if ($errors->has('Address'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('Address')}}</strong>
@@ -206,11 +197,11 @@
              
               <div class="form-group">
                 <label for="inputName">Age</label>
-                <input type="text" class="form-control{{ $errors->has('Last_Name') ? ' is-invalid' : ''}} " name="Last_Name" id="Last_Name" 
-                      value="{{ old('Last_Name') }}"  autocomplete="Last_Name" autofocus>
-                      @if ($errors->has('Last_Name'))
+                <input type="number" class="form-control{{ $errors->has('Age') ? ' is-invalid' : ''}} " name="Age" id="Last_Name" 
+                      value="{{ auth()->user()->Age }}"  autocomplete="Age" autofocus>
+                      @if ($errors->has('Age'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('Last_Name')}}</strong>
+                                        <strong>{{ $errors->first('Age')}}</strong>
                                     </span>
                                 @endif
               </div>
@@ -229,31 +220,31 @@
             <div class="card-body">
               <div class="form-group">
                 <label for="inputEstimatedBudget">School Name</label>
-                <input type="text" class="form-control{{ $errors->has('School_Name') ? ' is-invalid' : ''}} " name="School_Name" id="School_Name" 
-                      value="{{ old('School_Name') }}"  autocomplete="School_Name" autofocus>
-                      @if ($errors->has('School_Name'))
+                <input type="text" class="form-control{{ $errors->has('Name_School') ? ' is-invalid' : ''}} " name="Name_School" id="Name_School" 
+                      value="{{  auth()->user()->Name_School }}"  autocomplete="Name_School" autofocus>
+                      @if ($errors->has('Name_School'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('School_Name')}}</strong>
+                                        <strong>{{ $errors->first('Name_School')}}</strong>
                                     </span>
                                 @endif
               </div>
               <div class="form-group">
                 <label for="inputEstimatedBudget">Grade/Course</label>
-                <input type="text" class="form-control{{ $errors->has('grade') ? ' is-invalid' : ''}} " name="grade" id="grade" 
-                      value="{{ old('grade') }}"  autocomplete="grade" autofocus>
-                      @if ($errors->has('grade'))
+                <input type="text" class="form-control{{ $errors->has('Grade') ? ' is-invalid' : ''}} " name="Grade" id="grade" 
+                      value="{{ auth()->user()->Grade }}"  autocomplete="Grade" autofocus>
+                      @if ($errors->has('Grade'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('grade')}}</strong>
+                                        <strong>{{ $errors->first('Grade')}}</strong>
                                     </span>
                                 @endif
               </div>
               <div class="form-group">
                 <label for="inputEstimatedBudget">GWA or General Weighted Average</label>
-                <input type="number" class="form-control{{ $errors->has('Parent_Income') ? ' is-invalid' : ''}} " name="Parent_Income" id="Parent_Income" 
-                      value="{{ old('Parent_Income') }}"  autocomplete="Parent_Income" autofocus>
-                      @if ($errors->has('Parent_Income'))
+                <input type="number" class="form-control{{ $errors->has('GWA') ? ' is-invalid' : ''}} " name="GWA" id="Parent_Income" 
+                      value="{{ auth()->user()->GWA }}"  autocomplete="GWA" autofocus>
+                      @if ($errors->has('GWA'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('Parent_Income')}}</strong>
+                                        <strong>{{ $errors->first('GWA')}}</strong>
                                     </span>
                                 @endif
               </div>
@@ -274,28 +265,28 @@
             <div class="card-body">
               <div class="form-group">
                 <label for="inputEstimatedBudget">Parent Guardian Name</label>
-                <input type="text" class="form-control{{ $errors->has('School_Name') ? ' is-invalid' : ''}} " name="School_Name" id="School_Name" 
-                      value="{{ old('School_Name') }}"  autocomplete="School_Name" autofocus>
-                      @if ($errors->has('School_Name'))
+                <input type="text" class="form-control{{ $errors->has('Parent_Name') ? ' is-invalid' : ''}} " name="Parent_Name" id="School_Name" 
+                      value="{{ auth()->user()->Parent_Name }}"  autocomplete="Parent_Name" autofocus>
+                      @if ($errors->has('Parent_Name'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('School_Name')}}</strong>
+                                        <strong>{{ $errors->first('Parent_Name')}}</strong>
                                     </span>
                                 @endif
               </div>
               <div class="form-group">
                 <label for="inputEstimatedBudget">Relationship</label>
-                <input type="text" class="form-control{{ $errors->has('grade') ? ' is-invalid' : ''}} " name="grade" id="grade" 
-                      value="{{ old('grade') }}"  autocomplete="grade" autofocus>
-                      @if ($errors->has('grade'))
+                <input type="text" class="form-control{{ $errors->has('Relationship') ? ' is-invalid' : ''}} " name="Relationship" id="grade" 
+                      value="{{ auth()->user()->Relationship  }}"  autocomplete="Relationship" autofocus>
+                      @if ($errors->has('Relationship'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('grade')}}</strong>
+                                        <strong>{{ $errors->first('Relationship')}}</strong>
                                     </span>
                                 @endif
               </div>
               <div class="form-group">
                 <label for="inputEstimatedBudget">Parent Income Monthly</label>
                 <input type="number" class="form-control{{ $errors->has('Parent_Income') ? ' is-invalid' : ''}} " name="Parent_Income" id="Parent_Income" 
-                      value="{{ old('Parent_Income') }}"  autocomplete="Parent_Income" autofocus>
+                      value="{{auth()->user()->Parent_Income }}"  autocomplete="Parent_Income" autofocus>
                       @if ($errors->has('Parent_Income'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('Parent_Income')}}</strong>

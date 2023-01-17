@@ -37,6 +37,7 @@ Route::post('Updateprofile', [App\Http\Controllers\backend\UserController::class
 
 Route::get('/delete-user/{id}', [App\Http\Controllers\backend\UserController::class, 'Deleteuser'])->name('DeleteUser');
 
+
 Route::post('/p', [App\Http\Controllers\ScholarshipController::class, 'Store'])->name('Store');
 
 Route::get('/Scholarship', [App\Http\Controllers\ScholarshipController::class, 'Scholarship'])->name('Scholarship');
@@ -56,6 +57,8 @@ Route::get('/Apply/{id}', [App\Http\Controllers\StudentController::class, 'Apply
 
 Route::get('/Applicants/{id}', [App\Http\Controllers\StudentController::class, 'Applicants'])->name('Applicants');
 
+
+Route::get('/Approve/{id}', [App\Http\Controllers\StudentController::class, 'Approve'])->name('Approve');
 
 Route::get('/Profile', [App\Http\Controllers\backend\UserController::class, 'profile'])->name('profile');
 

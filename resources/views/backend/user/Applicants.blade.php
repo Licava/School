@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
+  <link rel="stylesheet" href="../../toaster/toastr.min.css">
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
@@ -211,9 +212,9 @@
                   <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Profile Picture </th>
+                    <th>School Name</th>
+                    <th>Address</th>
+                    <th>Grade </th>
                     <th>Action </th>
                   </tr>
                   </thead>
@@ -222,9 +223,10 @@
                   @foreach($ikawna as  $key=> $Applicants)
                   <tr>
                     <td>{{ $key+1 }}</td>
-                    <td>{{ $Applicants->School_Name}}  </td>
+                    <td>    {{ $Applicants->name}}  </td>
+                    <td>{{ $Applicants->Name_School}}  </td>
                     <td> {{ $Applicants->Address}}</td>
-                    <td>{{$Applicants->Phone_number}}</td>
+                    <td>{{$Applicants->Grade}}</td>
                     <td>
 
                     <div class="card card-primary card-outline">
@@ -237,6 +239,137 @@
                 <h3 class="profile-username text-center">{{ $Applicants->user->name }}</h3>
 
                 <p class="text-muted text-center">{{$Applicants->user->email}}</p>
+
+  
+
+        
+              </div>
+              <!-- /.card-body -->
+            </div>
+
+
+
+                    </td>
+                    <td>
+                    <div>
+                    <a href=""class ="btn btn-sm btn-success">
+                      <i class="fas fa-comments"></i>&nbsp; Appove
+</a>
+</div>
+<h1></h1>
+<div>
+                    <a href=""class ="btn btn-sm btn-info">
+                      <i class="fas fa-inbox"></i>&nbsp; Details
+</a>
+</div>
+                        
+                    </td>
+                  </tr>
+                  @endforeach
+                 
+                </table>
+              </div>
+              <div class="card-header">
+                <h3 class="card-title"><B>Scholarship Applicants Who Do Not Meet Certain Criteria</B></h3>
+              </div>
+              <div class="card-body">
+              <table id="example2" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Profile Picture </th>
+                    <th>Action </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                 
+                  @foreach($wase as $Applicant)
+                  <tr>
+                  <td> {{ $Applicant->id}}</td>
+                    <td>{{ $Applicant->School_Name}}  </td>
+                    <td> {{ $Applicant->Address}}</td>
+                    <td>{{$Applicant->Phone_number}}</td>
+                    <td>
+
+                    <div class="card card-primary card-outline">
+              <div class="card-body box-profile">
+              <div class="text-center">
+                  <img id="showImage" class="profile-user-img img-fluid img-circle"
+                       src="{{(!empty($Applicant->user->profile_image))? url(  'upload/profile_image/'.$Applicant->user->profile_image):url('upload/no_image.jpg')}}"
+                       alt="User profile picture">
+                </div>
+                <h3 class="profile-username text-center">{{ $Applicant->user->name }}</h3>
+
+                <p class="text-muted text-center">{{$Applicant->user->email}}</p>
+
+  
+
+        
+              </div>
+              <!-- /.card-body -->
+            </div>
+
+
+
+                    </td>
+                    <td>
+                    <div>
+                    <a href="{{URL::to ('/Approve/'.$Applicant->id) }}"class ="btn btn-sm btn-success">
+                      <i class="fas fa-comments"></i>&nbsp; Appove
+</a>
+</div>
+<h1></h1>
+<div>
+                    <a href=""class ="btn btn-sm btn-info">
+                      <i class="fas fa-inbox"></i>&nbsp; Details
+</a>
+</div>
+                        
+                    </td>
+                  </tr>
+                  @endforeach
+                 
+                </table>
+              </div>
+              <div class="card-header">
+                <h3 class="card-title"><B>Scholarship Applicants Approve Their Scholarship Application</B></h3>
+              </div>
+              
+              <div class="card-body">
+              <table id="example3" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Profile Picture </th>
+                    <th>Action </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                 
+                  @foreach($wasted as  $Applicantes)
+                  <tr>
+                  <td></td>
+                    <td>    {{ $Applicantes->name}}  </td>
+                    <td>{{ $Applicantes->Name_School}}  </td>
+                    <td> {{ $Applicantes->Address}}</td>
+                    <td>{{$Applicantes->Grade}}</td>
+                    <td>
+                    <div class="card card-primary card-outline">
+              <div class="card-body box-profile">
+              <div class="text-center">
+                  <img id="showImage" class="profile-user-img img-fluid img-circle"
+                       src="{{(!empty($Applicants->user->profile_image))? url(  'upload/profile_image/'.$Applicants->user->profile_image):url('upload/no_image.jpg')}}"
+                       alt="User profile picture">
+                </div>
+                <h3 class="profile-username text-center">{{ $Applicantes->user->name }}</h3>
+
+                <p class="text-muted text-center">{{$Applicantes->user->email}}</p>
 
   
 
@@ -312,6 +445,8 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page specific script -->
+<script src="../../toaster/toastr.min.js"></script>
+<script src="../../toaster/sweetalert.min.js"></script>
 <script>
   $(function () {
     $("#example1").DataTable({
@@ -321,5 +456,44 @@
    
   });
 </script>
+<script>
+  $(function () {
+    $("#example2").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
+   
+  });
+</script>
+<script>
+  $(function () {
+    $("#example3").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example3_wrapper .col-md-6:eq(0)');
+   
+  });
+</script>
+
+<script>
+            @if(Session::has('messege'))
+              var type="{{Session::get('alert-type','info')}}"
+              switch(type){
+                  case 'info':
+                       toastr.info("{{ Session::get('messege') }}");
+                       break;
+                  case 'success':
+                      toastr.success("{{ Session::get('messege') }}");
+                      break;
+                  case 'warning':
+                     toastr.warning("{{ Session::get('messege') }}");
+                      break;
+                  case 'error':
+                      toastr.error("{{ Session::get('messege') }}");
+                      break;
+              }
+            @endif
+         </script>  
+
 </body>
 </html>

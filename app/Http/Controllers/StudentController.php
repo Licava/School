@@ -25,17 +25,19 @@ class StudentController extends Controller
     {
        
         $data = $request->validate([
-            'First_Name' => 'required',
-            'Last_Name' => 'required',
-            'Phone_number' => 'required',
+            'name' => 'required',
+            'Phone_Number' => 'required',
             'Address' => 'required',
-            'School_Name' => 'required',
-            'grade' => 'required',
+            'Name_School' => 'required',
+            'Grade' => 'required',
+            'Age' => 'required',
             'Parent_Income' => 'required',
+            'Relationship' => 'required',
+            'GWA' => 'required',
+         
         ]);
         
-  
-        
+
         $data['scholarship_id'] = $request->id;
     
        
@@ -54,14 +56,15 @@ class StudentController extends Controller
 
     public function Applicants(Student $tudent, $id)
     {   
+        $wasted = Student::where([  ['Scholarship_id', '!=', $id],   ['Status', 'Approve']])->get();
         $userdata = Scholarship::find($id);
-       
+      
         if( ($tudent->grade !=  $userdata?->grade) )
         {
           
        
             $ikawna = Student::where([
-                ['grade', '=',$userdata->grade],
+                ['Grade', '=',$userdata->grade],
                 ['Scholarship_id', '=', $id],
               
             ])
@@ -97,7 +100,7 @@ class StudentController extends Controller
             $ikawna = Student::where([
                 ['Scholarship_id', '=', $id],
                 ['Address', '=', $userdata->address],
-                ['grade', '=',$userdata->grade],
+                ['Grade', '=',$userdata->grade],
             ])
             ->get();
         }          
@@ -108,9 +111,86 @@ class StudentController extends Controller
             $ikawna = Student::where([  ['Scholarship_id', '=', $id], ])->get();
         }
       
-        return view ('backend.user.Applicants', compact('ikawna'));
+
+
+        if( ($tudent->grade !=  $userdata?->grade) )
+        {
+          
+       
+            $wase = Student::where([
+                ['Grade', '!=',$userdata->grade],
+                ['Scholarship_id', '=', $id],
+                ['Status', '=', 'Pending'],
+              
+            ])
+            ->get();
+           
+
+        } 
+        elseif(($tudent->Address !=  $userdata?->address))
+        {
+        
+            $wase = Student::where([
+             
+                ['Address', '!=', $userdata->address],
+                ['Scholarship_id', '=', $id],
+                ['Status', '=', 'Pending'],
+            ])
+            ->get();
+        }     
+        elseif(($tudent->Parent_Income !=  $userdata?->Parent_Income))
+        {
+        
+            $wase = Student::where([
+             
+                ['Parent_Income', '!=', $userdata->Parent_Income],
+                ['Scholarship_id', '=', $id],
+                ['Status', '=', 'Pending'],
+             
+            ])
+            ->get();
+        }            
+        elseif(($tudent->grade  !=  $userdata?->grade) && ($tudent->Address != $userdata?->address) )
+        {
+        
+            $wase = Student::where([
+                ['Scholarship_id', '=', $id],
+                ['Address', '!=', $userdata->address],
+                ['Grade', '!=',$userdata->grade],
+                ['Status', '=', 'Pending'],
+            ])
+            ->get();
+        }          
+              
+        else
+        {
+           
+            $pogi = Student::where([  ['Scholarship_id', '!=', $id],   ['Status', 'Pending']])->get();
+        }
+      
+
+     
+
+        return view ('backend.user.Applicants',  compact('ikawna', 'wase', 'wasted'));
         
         
     }
+    
+    public function Approve($id)
+    {
+      
+        $datas = array();
+        $datas['Status'] = 'Approve';
+        $datasd =  DB::table('students')->where('id',$id)->update($datas);
+        $notifications = array
+        (
+         'messege'=>'Successfully User Inserted',
+         'alert-type'=>'success'
+
+        );
+        return redirect()->back()->with($notifications);
+        
+    }
+
 
 }
