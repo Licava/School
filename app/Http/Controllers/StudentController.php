@@ -7,7 +7,7 @@ use App\Models\Scholarship;
 use App\Models\Student;
 use DB;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class StudentController extends Controller
 {
     public function __construct()
@@ -56,7 +56,7 @@ class StudentController extends Controller
 
     public function Applicants(Student $tudent, $id)
     {   
-        $wasted = Student::where([  ['Scholarship_id', '!=', $id],   ['Status', 'Approve']])->get();
+        $wasted = Student::where([['Scholarship_id', $id],['Status', '=' , 'Approve']])->get();
         $userdata = Scholarship::find($id);
       
         if( ($tudent->grade !=  $userdata?->grade) )
@@ -66,7 +66,7 @@ class StudentController extends Controller
             $ikawna = Student::where([
                 ['Grade', '=',$userdata->grade],
                 ['Scholarship_id', '=', $id],
-              
+                ['Status', '=' , 'Pending'],
             ])
             ->get();
            
@@ -79,6 +79,7 @@ class StudentController extends Controller
              
                 ['Address', '=', $userdata->address],
                 ['Scholarship_id', '=', $id],
+                ['Status', '=' , 'Pending'],
              
             ])
             ->get();
@@ -90,6 +91,7 @@ class StudentController extends Controller
              
                 ['Parent_Income', '=', $userdata->Parent_Income],
                 ['Scholarship_id', '=', $id],
+                ['Status', '=' , 'Pending'],
              
             ])
             ->get();
@@ -101,6 +103,7 @@ class StudentController extends Controller
                 ['Scholarship_id', '=', $id],
                 ['Address', '=', $userdata->address],
                 ['Grade', '=',$userdata->grade],
+                ['Status', '=' , 'Pending'],
             ])
             ->get();
         }          
@@ -108,7 +111,7 @@ class StudentController extends Controller
         else
         {
            
-            $ikawna = Student::where([  ['Scholarship_id', '=', $id], ])->get();
+            $ikawna = Student::where([  ['Scholarship_id', '=', $id],    ['Status', '=' , 'Pending'] ])->get();
         }
       
 
@@ -165,13 +168,13 @@ class StudentController extends Controller
         else
         {
            
-            $pogi = Student::where([  ['Scholarship_id', '!=', $id],   ['Status', 'Pending']])->get();
+            $wase = Student::where([  ['Scholarship_id', '!=', $id],   ['Status', 'Pending']])->get();
         }
       
-
+   
      
 
-        return view ('backend.user.Applicants',  compact('ikawna', 'wase', 'wasted'));
+        return view ('backend.user.Applicants',  compact('ikawna', 'wase' , 'wasted'));
         
         
     }
@@ -181,7 +184,7 @@ class StudentController extends Controller
       
         $datas = array();
         $datas['Status'] = 'Approve';
-        $datasd =  DB::table('students')->where('id',$id)->update($datas);
+        $datasd =  Student::where('id',$id)->update($datas);
         $notifications = array
         (
          'messege'=>'Successfully User Inserted',
@@ -191,6 +194,33 @@ class StudentController extends Controller
         return redirect()->back()->with($notifications);
         
     }
+    public function Disapprove($id)
+    {
+      
+        $datas = array();
+        $datas['Status'] = 'Pending';
+        $datasd =  Student::where('id',$id)->update($datas);
+        $notifications = array
+        (
+         'messege'=>'Successfully User Disapprove',
+         'alert-type'=>'error'
 
+        );
+        return redirect()->back()->with($notifications);
+        
+    }
 
+    public function Remove($id)
+    {
+        $deletes = Auth::user()->student->firstWhere('scholarship_id', $id)->delete();
+        if ($deletes) {
+            $notifications = array
+            (
+                'messege' => 'Successfully User Disapprove',
+                'alert-type' => 'success'
+
+            );
+            return redirect()->back()->with($notifications);
+        }
+    }
 }

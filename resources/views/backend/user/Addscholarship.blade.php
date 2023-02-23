@@ -198,6 +198,20 @@
                         </div>
                         <p></p>
                         <div class="form-group">
+                    <label for="exampleInputEmail1">Limit of Applicants</label>
+                    <input type="number" class="form-control{{ $errors->has('title') ? ' is-invalid' : ''}} " name="limit_applicants" id="limit_applicants" 
+                      value="{{ old('limit_applicants') }}"  autocomplete="limit_applicants" autofocus>
+                      @if ($errors->has('description'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('limit_applicants')}}</strong>
+                                    </span>
+                                @endif
+                  </div>
+                        <p></p>
+
+
+
+                        <div class="form-group">
                         <label class="col-form-label" for="inputWarning"><i class="far fa-bell"></i> Set a Criteria</label>
                         <p>You can set one or more criteria to find the right applicants </p>
                         </div>

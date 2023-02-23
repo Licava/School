@@ -146,12 +146,12 @@
             @if(auth()-> user() ->role=='Admin')
             <div class="small-box bg-info">
               <div class="inner">
-        
-                <h3>{{auth()-> user()->where('role', 'Student')->count()}}</h3>
-             
+         @foreach(auth()->user()->scholarship as $pota)
+                <h3>{{$pota->student->count() }}</h3>
+                <h3>{{$pota->title }}</h3>
                 <p>Number of Students</p>
-
-            
+@endforeach
+           
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -256,42 +256,102 @@
           <!-- ./col -->
         </div>
         <!-- /.row -->
+        
+
+    </section>
+
+
+    <section class="content">
+      <div class="container-fluid">
         <div class="row">
-          <div class="col-md-12">
-            <div class="card">
+          <div class="col-md-6">
+
+            <!-- start here CHART -->
+           
+            <div class="card card-primary">
               <div class="card-header">
-                <h5 class="card-title"> {{auth()->user()->role}} - Dashboard</h5>
+                <h3 class="card-title">Scholarship</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
                   </button>
-                  <div class="btn-group">
-                  </div>
                   <button type="button" class="btn btn-tool" data-card-widget="remove">
                     <i class="fas fa-times"></i>
                   </button>
                 </div>
               </div>
-             
-              <!-- /.card-header -->
-             	
-  <div class="card-body">
+              @foreach(auth()->user()->scholarship as $pota)
+              <div class="card-body">
     <div class="row">
-      <div class="col-md-8">
-      Welcome {{auth()->user()->role}} - Dashboard
+      <div class="col-md-12">
+ 
+                    <p class="text-center">
+                      <strong> Your  </strong>
+                    </p>
+
+                    <div class="progress-group">
+                    Total of student applications
+                      <span class="float-right"><b>160</b>/500</span>
+                      <div class="progress progress-sm">
+                        <div class="progress-bar bg-primary" style="width: {{auth()->user()->count() / 32  }}%"></div>
+                      </div>
+                    </div>     
       </div>
     </div>
   </div>
-        <!-- Main row -->
-      
-          <!-- /.Left col -->
-          <!-- right col (We are only adding the ID to make the widgets sortable)-->
+  @endforeach
+             
+            </div>
+         <!-- CUT HERE-->
+
+
+          </div>
+          <div class="col-md-6">
+
+<!-- start here CHART -->
+
+<div class="card card-primary">
+  <div class="card-header">
+    <h3 class="card-title">Scholarship</h3>
+
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse">
+        <i class="fas fa-minus"></i>
+      </button>
+      <button type="button" class="btn btn-tool" data-card-widget="remove">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+  @foreach(auth()->user()->scholarship as $pota)
+  <div class="card-body">
+<div class="row">
+<div class="col-md-12">
+
+        <p class="text-center">
+          <strong> Your  </strong>
+        </p>
+
+        <div class="progress-group">
+        Total of student applications
+          <span class="float-right"><b>160</b>/500</span>
+          <div class="progress progress-sm">
+            <div class="progress-bar bg-primary" style="width: {{auth()->user()->count() / 32  }}%"></div>
+          </div>
+        </div>     
+</div>
+</div>
+</div>
+@endforeach
+ 
+</div>
+<!-- CUT HERE-->
+
+
+</div>
+              <!-- START HERE-->
          
-          <!-- right col -->
-        </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>

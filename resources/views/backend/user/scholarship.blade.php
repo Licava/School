@@ -205,10 +205,12 @@
               
                   <i class=" fas fa-solid fa-circle d-inline "   style = "color:#0BDA51">{{auth()->user()->student->firstwhere('scholarship_id', $Scholarship->id)?->Status}}</i>
                  
-    
+                  <a href="  {{ URL::to('/Remove/'.$Scholarship->id) }}" class="btn btn-sm btn-danger" id="sed">
+                      <i class="fas fa-envelope"></i> &nbsp; Remove
+                    </a>
               @endif
-                  <a href="#" class="btn btn-sm btn-success">
-                      <i class="fas fa-comments"></i> Details
+                  <a href="#" class="btn btn-sm btn-info">
+                      <i class="fas fa-user"></i>&nbsp;  Details
                     </a>
               
             @if(!$Scholarship->student->contains('user_id' , auth::id()))
@@ -251,4 +253,8 @@
       <b>Version</b> 3.2.0
     </div>
   </footer>
+
+
+  
+        
   @endsection
