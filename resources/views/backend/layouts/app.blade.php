@@ -131,6 +131,26 @@
 
 
 <script>  
+             $(document).on("click", "#sed", function(e){
+                 e.preventDefault();
+                 var link = $(this).attr("href");
+                    swal({
+                      title: "Are you Want to delete your appllication?",
+                      text: "Once Delete, This will be Permanently Delete!",
+                      icon: "warning",
+                      buttons: true,
+                      dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                      if (willDelete) {
+                           window.location.href = link;
+                      } else {
+                        swal("The Data has been saved !!");
+                      }
+                    });
+                });
+        </script>
+<script>  
              $(document).on("click", "#delete", function(e){
                  e.preventDefault();
                  var link = $(this).attr("href");

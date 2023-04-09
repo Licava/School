@@ -57,8 +57,12 @@ Route::get('/Apply/{id}', [App\Http\Controllers\StudentController::class, 'Apply
 
 Route::get('/Applicants/{id}', [App\Http\Controllers\StudentController::class, 'Applicants'])->name('Applicants');
 
+Route::get('/Remove/{id}', [App\Http\Controllers\StudentController::class, 'Remove'])->name('Remove');
+
 
 Route::get('/Approve/{id}', [App\Http\Controllers\StudentController::class, 'Approve'])->name('Approve');
+
+Route::get('/Disapprove/{id}', [App\Http\Controllers\StudentController::class, 'Disapprove'])->name('Disapprove');
 
 Route::get('/Profile', [App\Http\Controllers\backend\UserController::class, 'profile'])->name('profile');
 

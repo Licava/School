@@ -17,8 +17,9 @@
   <link rel="stylesheet" href="../../toaster/toastr.min.css">
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
+
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-info navbar-light">
     <!-- Left navbar links -->
@@ -71,7 +72,12 @@
       </li>
     </ul>
   </nav>
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
   <!-- /.navbar -->
+
+
 
  
   <!-- Main Sidebar Container -->
@@ -199,15 +205,36 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
-
   
-            <div class="card">
+
+<section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+
+            <!-- start here CHART -->
+           
+            <div class="card card">
               <div class="card-header">
-                <h3 class="card-title">Scholarship Applicants</h3>
+                <h3 class="card-title"> Scholarship Applicants Meet the Certain Criteria&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 {{ $ikawna->count() }}  &nbsp;Student </h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
               </div>
-              <!-- /.card-header -->
+      
               <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
+    <div class="row">
+      <div class="col-md-12">
+ 
+     
+      <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>ID</th>
@@ -215,6 +242,7 @@
                     <th>School Name</th>
                     <th>Address</th>
                     <th>Grade </th>
+                    <th>Action </th>
                     <th>Action </th>
                   </tr>
                   </thead>
@@ -252,7 +280,7 @@
                     </td>
                     <td>
                     <div>
-                    <a href=""class ="btn btn-sm btn-success">
+                    <a href="{{URL::to ('/Approve/'.$Applicants->id) }}"class ="btn btn-sm btn-success">
                       <i class="fas fa-comments"></i>&nbsp; Appove
 </a>
 </div>
@@ -268,12 +296,52 @@
                   @endforeach
                  
                 </table>
-              </div>
+
+      
+      </div>
+    </div>
+  </div>
+
+            </div>
+         <!-- CUT HERE-->
+
+
+          </div>
+
+              <!-- START HERE-->
+         
+    </section>
+
+
+
+<section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+
+            <!-- start here CHART -->
+           
+            <div class="card card">
               <div class="card-header">
-                <h3 class="card-title"><B>Scholarship Applicants Who Do Not Meet Certain Criteria</B></h3>
+                <h3 class="card-title">Scholarship Applicants Who Do Not Meet Certain Criteria  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 {{ $wase->count() }}  &nbsp;Student </h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
               </div>
+      
               <div class="card-body">
-              <table id="example2" class="table table-bordered table-striped">
+    <div class="row">
+      <div class="col-md-12">
+ 
+     
+      <table id="example2" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>ID</th>
@@ -317,7 +385,7 @@
                     </td>
                     <td>
                     <div>
-                    <a href="{{URL::to ('/Approve/'.$Applicant->id) }}"class ="btn btn-sm btn-success">
+                    <a href="{{URL::to ('/Approve/'.$Applicant->id)  }} "class ="btn btn-sm btn-success" id="approve">
                       <i class="fas fa-comments"></i>&nbsp; Appove
 </a>
 </div>
@@ -332,14 +400,54 @@
                   </tr>
                   @endforeach
                  
-                </table>
-              </div>
+                  
+                  </table>
+             
+
+      
+      </div>
+    </div>
+  </div>
+
+            </div>
+         <!-- CUT HERE-->
+
+
+          </div>
+
+              <!-- START HERE-->
+         
+    </section>
+
+<section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+
+            <!-- start here CHART -->
+           
+            <div class="card card">
               <div class="card-header">
-                <h3 class="card-title"><B>Scholarship Applicants Approve Their Scholarship Application</B></h3>
+                <h3 class="card-title">Scholarship Applicants who Approve their scholarship application  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 {{ $wasted->where('Status', 'Approve')->count() }}  &nbsp;Student </h3>
+            
+                <div class="card-tools">
+
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
               </div>
-              
+      
               <div class="card-body">
-              <table id="example3" class="table table-bordered table-striped">
+    <div class="row">
+      <div class="col-md-12">
+ 
+     
+              <table id="example4" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>ID</th>
@@ -348,13 +456,14 @@
                     <th>Role</th>
                     <th>Profile Picture </th>
                     <th>Action </th>
+                    
                   </tr>
                   </thead>
                   <tbody>
                  
                   @foreach($wasted as  $Applicantes)
                   <tr>
-                  <td></td>
+               
                     <td>    {{ $Applicantes->name}}  </td>
                     <td>{{ $Applicantes->Name_School}}  </td>
                     <td> {{ $Applicantes->Address}}</td>
@@ -370,7 +479,6 @@
                 <h3 class="profile-username text-center">{{ $Applicantes->user->name }}</h3>
 
                 <p class="text-muted text-center">{{$Applicantes->user->email}}</p>
-
   
 
         
@@ -383,8 +491,8 @@
                     </td>
                     <td>
                     <div>
-                    <a href=""class ="btn btn-sm btn-success">
-                      <i class="fas fa-comments"></i>&nbsp; Appove
+                    <a href= "{{URL::to ('/Disapprove/'.$Applicantes->id)  }} "   class ="btn btn-sm btn-danger" id="disapprove">
+                      <i class="fas fa-user"></i>&nbsp; Disapprove
 </a>
 </div>
 <h1></h1>
@@ -396,32 +504,26 @@
                         
                     </td>
                   </tr>
+                  
                   @endforeach
-                 
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
+</table>
+             
+
+      
       </div>
-      <!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+    </div>
   </div>
-  <!-- /.content-wrapper -->
+
+            </div>
+         <!-- CUT HERE-->
 
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
+          </div>
+
+              <!-- START HERE-->
+         
+    </section>
+
 
 <!-- jQuery -->
 <script src="../../plugins/jquery/jquery.min.js"></script>
@@ -451,7 +553,7 @@
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      "buttons": ["copy" ,"excel", "pdf", "print"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
    
   });
@@ -460,17 +562,17 @@
   $(function () {
     $("#example2").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      "buttons": ["copy" ,"excel", "pdf", "print"]
     }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
    
   });
 </script>
 <script>
   $(function () {
-    $("#example3").DataTable({
+    $("#example4").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example3_wrapper .col-md-6:eq(0)');
+      "buttons": ["copy" ,"excel", "pdf", "print"]
+    }).buttons().container().appendTo('#example4_wrapper .col-md-6:eq(0)');
    
   });
 </script>
@@ -494,6 +596,67 @@
               }
             @endif
          </script>  
+         <script>  
+   
+   function submitForm(form) {
+        swal({
+            title: "Are you sure?",
+            text: "This form will be submitted",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then(function (isOkay) {
+            if (isOkay) {
+                form.submit();
+            }
+        });
+        return false;
+    }
+
+</script>
+
+<script>  
+             $(document).on("click", "#approve", function(e){
+                 e.preventDefault();
+                 var link = $(this).attr("href");
+                    swal({
+                      title: "Are you Want to delete?",
+                      text: "Once Delete, This will be Permanently Delete!",
+                      icon: "warning",
+                      buttons: true,
+                      dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                      if (willDelete) {
+                           window.location.href = link;
+                      } else {
+                        swal("The Data has been saved !!");
+                      }
+                    });
+                });
+        </script>
+        
+<script>  
+             $(document).on("click", "#disapprove", function(e){
+                 e.preventDefault();
+                 var link = $(this).attr("href");
+                    swal({
+                      title: "Are you Want to delete?",
+                      text: "Once Delete, This will be Permanently Delete!",
+                      icon: "warning",
+                      buttons: true,
+                      dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                      if (willDelete) {
+                           window.location.href = link;
+                      } else {
+                        swal("The Data has been saved !!");
+                      }
+                    });
+                });
+        </script>
 
 </body>
 </html>
